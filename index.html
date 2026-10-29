@@ -33,7 +33,7 @@
 
     <!-- Estilos Base & Redesign -->
     <link rel="stylesheet" href="./assets/styles.css">
-    <link rel="stylesheet" href="./assets/redesign.css?v=11">
+    <link rel="stylesheet" href="./assets/redesign.css?v=12">
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
@@ -136,10 +136,10 @@
       </section>
 
       <!-- ============ 02 · MARQUEE DE PROVA SOCIAL ============ -->
-      <section class="marquee-container" data-testid="section-social-proof-marquee">
-        <div class="relative flex">
-          <div class="flex animate-marquee whitespace-nowrap" id="marquee-row-1"></div>
-          <div class="flex absolute top-0 left-0 animate-marquee2 whitespace-nowrap" id="marquee-row-2"></div>
+      <section class="marquee-container" data-testid="section-social-proof-marquee" aria-label="Avaliações dos Pais">
+        <div class="marquee-track">
+          <div class="marquee-group" id="marquee-row-1"></div>
+          <div class="marquee-group" id="marquee-row-2" aria-hidden="true"></div>
         </div>
       </section>
 

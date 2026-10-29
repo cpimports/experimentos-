@@ -447,6 +447,7 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   padding: 16px 0;
   overflow: hidden;
   position: relative;
+  width: 100%;
 }
 
 .marquee-container::before,
@@ -455,8 +456,8 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 60px;
-  z-index: 2;
+  width: 80px;
+  z-index: 3;
   pointer-events: none;
 }
 
@@ -470,6 +471,33 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   background: linear-gradient(270deg, #FFFFFF, transparent);
 }
 
+.marquee-track {
+  display: flex !important;
+  width: max-content !important;
+  will-change: transform;
+  animation: continuousMarquee 28s linear infinite !important;
+}
+
+.marquee-container:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-group {
+  display: flex !important;
+  flex-shrink: 0;
+  align-items: center;
+  white-space: nowrap;
+}
+
+@keyframes continuousMarquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
 .marquee-container [data-testid^="marquee-item-"] {
   display: inline-flex;
   align-items: center;
@@ -478,8 +506,9 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   border: 1px solid var(--color-border);
   border-radius: 40px;
   padding: 8px 18px;
-  margin: 0 8px;
+  margin: 0 10px;
   box-shadow: 0 2px 8px rgba(23, 52, 92, 0.04);
+  flex-shrink: 0;
 }
 
 .marquee-container .lucide-star {

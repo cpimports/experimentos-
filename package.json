@@ -1,16 +1,13 @@
 {
-  "name": "pequeno-genio-clone",
+  "name": "experimentos-infantis",
   "version": "1.0.0",
-  "description": "Clone do site Pequeno Gênio - Guia de Experimentos Infantis",
-  "main": "server.js",
+  "description": "Geniozinho em Acao - Guia de Experimentos Infantis",
   "scripts": {
-    "build": "echo Static site ready",
     "start": "node server.js",
     "dev": "node server.js"
   },
   "keywords": [
-    "landing-page",
-    "clone"
+    "landing-page"
   ],
   "author": "",
   "license": "ISC",
