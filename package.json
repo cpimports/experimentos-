@@ -4,6 +4,7 @@
   "description": "Clone do site Pequeno Gênio - Guia de Experimentos Infantis",
   "main": "server.js",
   "scripts": {
+    "build": "echo Static site ready",
     "start": "node server.js",
     "dev": "node server.js"
   },
