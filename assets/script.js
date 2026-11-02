@@ -410,117 +410,43 @@
   }
 
 
-  /* ---------- Carrossel de Fotos: Auto-scroll Contínuo + Arraste por Toque / Dedo ---------- */
+  /* ---------- Carrossel de Fotos: Navegação por Setas + Deslize com o Dedo (Não Infinito, com Peek) ---------- */
   (function initKidsPhotosCarousel() {
-    var wrap = document.getElementById("kids-photos-carousel");
-    var group1 = document.getElementById("kids-photos-group-1");
-    if (!wrap || !group1) return;
+    var viewport = document.getElementById("kids-photos-viewport");
+    var prevBtn = document.getElementById("kids-prev-btn");
+    var nextBtn = document.getElementById("kids-next-btn");
+    if (!viewport) return;
 
-    var speed = 1.35; // velocidade equilibrada de auto-scroll
-    var isDown = false;
-    var startX = 0;
-    var scrollLeftStart = 0;
-    var isPaused = false;
-    var resumeTimer = null;
-    var rafId = null;
-
-    function pause() {
-      isPaused = true;
-      if (resumeTimer) clearTimeout(resumeTimer);
+    function getScrollStep() {
+      var item = viewport.querySelector(".kid-photo-item");
+      return item ? (item.offsetWidth + 22) : 340;
     }
 
-    function resumeAfter(delay) {
-      if (resumeTimer) clearTimeout(resumeTimer);
-      resumeTimer = setTimeout(function () {
-        isPaused = false;
-      }, delay || 1400);
+    if (prevBtn) {
+      prevBtn.addEventListener("click", function () {
+        viewport.scrollBy({ left: -getScrollStep(), behavior: "smooth" });
+      });
     }
 
-    // Auto-scroll contínuo via requestAnimationFrame
-    function step() {
-      if (!isPaused && !isDown) {
-        var halfWidth = group1.offsetWidth + 24; // largura de um grupo + gap
-        if (halfWidth > 0) {
-          wrap.scrollLeft += speed;
-          if (wrap.scrollLeft >= halfWidth) {
-            wrap.scrollLeft -= halfWidth;
-          }
-        }
-      }
-      rafId = requestAnimationFrame(step);
+    if (nextBtn) {
+      nextBtn.addEventListener("click", function () {
+        viewport.scrollBy({ left: getScrollStep(), behavior: "smooth" });
+      });
     }
-    rafId = requestAnimationFrame(step);
 
-    // Suporte a Toque com o Dedo (Mobile / Tablet)
-    wrap.addEventListener("touchstart", function (e) {
-      pause();
-      isDown = true;
-      startX = e.touches[0].pageX;
-      scrollLeftStart = wrap.scrollLeft;
-    }, { passive: true });
-
-    wrap.addEventListener("touchmove", function (e) {
-      if (!isDown) return;
-      var x = e.touches[0].pageX;
-      var walk = (x - startX);
-      wrap.scrollLeft = scrollLeftStart - walk;
-    }, { passive: true });
-
-    wrap.addEventListener("touchend", function () {
-      isDown = false;
-      // Normaliza para o loop infinito
-      var halfWidth = group1.offsetWidth + 24;
-      if (halfWidth > 0) {
-        if (wrap.scrollLeft >= halfWidth) {
-          wrap.scrollLeft -= halfWidth;
-        } else if (wrap.scrollLeft <= 0) {
-          wrap.scrollLeft += halfWidth;
-        }
+    function updateArrowStates() {
+      var maxScroll = viewport.scrollWidth - viewport.clientWidth - 10;
+      if (prevBtn) {
+        prevBtn.disabled = viewport.scrollLeft <= 10;
       }
-      resumeAfter(1600);
-    }, { passive: true });
-
-    // Suporte a Arraste com o Mouse (Desktop)
-    wrap.addEventListener("mousedown", function (e) {
-      pause();
-      isDown = true;
-      startX = e.pageX - wrap.offsetLeft;
-      scrollLeftStart = wrap.scrollLeft;
-    });
-
-    window.addEventListener("mousemove", function (e) {
-      if (!isDown) return;
-      e.preventDefault();
-      var x = e.pageX - wrap.offsetLeft;
-      var walk = (x - startX) * 1.2;
-      wrap.scrollLeft = scrollLeftStart - walk;
-    });
-
-    window.addEventListener("mouseup", function () {
-      if (isDown) {
-        isDown = false;
-        var halfWidth = group1.offsetWidth + 24;
-        if (halfWidth > 0) {
-          if (wrap.scrollLeft >= halfWidth) {
-            wrap.scrollLeft -= halfWidth;
-          } else if (wrap.scrollLeft <= 0) {
-            wrap.scrollLeft += halfWidth;
-          }
-        }
-        resumeAfter(1400);
+      if (nextBtn) {
+        nextBtn.disabled = viewport.scrollLeft >= maxScroll;
       }
-    });
+    }
 
-    // Pausa no hover do mouse
-    wrap.addEventListener("mouseenter", function () {
-      pause();
-    });
-
-    wrap.addEventListener("mouseleave", function () {
-      if (!isDown) {
-        resumeAfter(800);
-      }
-    });
+    viewport.addEventListener("scroll", updateArrowStates, { passive: true });
+    window.addEventListener("resize", updateArrowStates, { passive: true });
+    updateArrowStates();
   })();
 
 })();
