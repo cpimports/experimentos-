@@ -33,7 +33,7 @@
 
     <!-- Estilos Base & Redesign -->
     <link rel="stylesheet" href="./assets/styles.css">
-    <link rel="stylesheet" href="./assets/redesign.css?v=42">
+    <link rel="stylesheet" href="./assets/redesign.css?v=43">
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
@@ -484,63 +484,13 @@
 
           </div>
           <!-- ============ RECEITA DA MÁGICA: ITENS DA SUA COZINHA ============ -->
-          <div class="magic-recipe-card" data-testid="section-magic-recipe" aria-label="Ingredientes caseiros dos experimentos">
-            
-            <h2 class="magic-recipe-title">A mágica começa na sua cozinha</h2>
-
-            <div class="magic-recipe-equation" aria-label="Equação de ingredientes: Bicarbonato mais Vinagre mais Detergente mais Corante igual a Mágica">
-              
-              <!-- 1. Bicarbonato -->
-              <div class="magic-recipe-item">
-                <span class="recipe-emoji" role="img" aria-label="Bicarbonato">🧂</span>
-                <span class="recipe-name">Bicarbonato</span>
-              </div>
-
-              <!-- Sinal + -->
-              <span class="recipe-operator" aria-hidden="true">+</span>
-
-              <!-- 2. Vinagre -->
-              <div class="magic-recipe-item">
-                <span class="recipe-emoji" role="img" aria-label="Vinagre">🍶</span>
-                <span class="recipe-name">Vinagre</span>
-              </div>
-
-              <!-- Sinal + -->
-              <span class="recipe-operator" aria-hidden="true">+</span>
-
-              <!-- 3. Detergente -->
-              <div class="magic-recipe-item">
-                <span class="recipe-emoji" role="img" aria-label="Detergente">🧼</span>
-                <span class="recipe-name">Detergente</span>
-              </div>
-
-              <!-- Sinal + -->
-              <span class="recipe-operator" aria-hidden="true">+</span>
-
-              <!-- 4. Corante -->
-              <div class="magic-recipe-item">
-                <span class="recipe-emoji" role="img" aria-label="Corante">🎨</span>
-                <span class="recipe-name">Corante</span>
-              </div>
-
-              <!-- Sinal = -->
-              <span class="recipe-operator recipe-equal" aria-hidden="true">=</span>
-
-              <!-- Resultado: Mágica! -->
-              <div class="magic-recipe-item magic-recipe-result">
-                <span class="recipe-emoji" role="img" aria-label="Mágica">✨</span>
-                <span class="recipe-name recipe-result-name">Mágica!</span>
-              </div>
-
-            </div>
-
-            <!-- Frase de apoio -->
-            <p class="magic-recipe-note">
-              Itens comuns de casa, sem preparação complicada. Realize sempre com a supervisão de um adulto.
-            </p>
-
+          <div class="magic-recipe-wrapper" data-testid="section-magic-recipe">
+            <img src="./assets/receita-da-magica.jpg" 
+                 alt="A mágica começa na sua cozinha: Bicarbonato + Vinagre + Detergente + Corante = Mágica! Itens comuns de casa, sem preparação complicada. Realize sempre com a supervisão de um adulto." 
+                 class="magic-recipe-img"
+                 loading="lazy"
+                 decoding="async">
           </div>
-
 
           <!-- Botão CTA da Seção 4 (Fora do Card) -->
           <div class="text-center" style="margin-top: 32px; margin-bottom: 8px;">
