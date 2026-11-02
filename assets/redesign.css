@@ -1779,6 +1779,8 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 }
 
 .magic-recipe-card {
+  max-width: 680px;
+  margin: 24px auto 0;
   background: linear-gradient(180deg, #F8FAFD 0%, #FFFFFF 100%);
   border: 1.5px solid var(--color-border);
   border-radius: var(--radius-xl);
