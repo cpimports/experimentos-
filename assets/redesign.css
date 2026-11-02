@@ -475,7 +475,7 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   display: flex !important;
   width: max-content !important;
   will-change: transform;
-  animation: continuousMarquee 28s linear infinite !important;
+  animation: continuousMarquee 58s linear infinite !important;
 }
 
 .marquee-container:hover .marquee-track {
@@ -523,6 +523,31 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   font-size: 0.92rem;
   font-weight: 600;
   color: var(--color-dark-blue);
+}
+
+@media (max-width: 768px) {
+  .marquee-track {
+    animation-duration: 65s !important;
+  }
+
+  .marquee-container {
+    padding: 12px 0;
+  }
+
+  .marquee-container::before,
+  .marquee-container::after {
+    width: 28px;
+  }
+
+  .marquee-container [data-testid^="marquee-item-"] {
+    padding: 7px 14px;
+    margin: 0 8px;
+    gap: 8px;
+  }
+
+  .marquee-container span {
+    font-size: 0.86rem;
+  }
 }
 
 /* ==========================================================================

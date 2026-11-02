@@ -24,7 +24,7 @@
   var STAR = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-3 h-3 text-success fill-success"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
   var row1 = document.getElementById("marquee-row-1");
   var row2 = document.getElementById("marquee-row-2");
-  if (row1 && row2) {
+  if (row1 && row2 && row1.children.length === 0) {
     var itens = depoimentos.concat(depoimentos); // mesma duplicação do original
     var html = "";
     for (var i = 0; i < itens.length; i++) {
@@ -677,6 +677,10 @@
     // Inicialização na posição central do 1º item original
     jumpToIndex(count);
     updateActiveDot();
+    window.addEventListener("load", function () {
+      jumpToIndex(count);
+      updateActiveDot();
+    }, { passive: true });
   })();
 
 })();
