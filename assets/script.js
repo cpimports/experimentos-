@@ -121,53 +121,81 @@
     }
   }
 
-  /* ---------- Carrossel de depoimentos ---------- */
-  var carrossel = document.getElementById("testimonial-carousel");
-  var trilho = document.getElementById("testimonial-track");
-  if (carrossel && trilho) {
-    var total = trilho.children.length;
-    var atual = 0;
-    var pausado = false;
-    var pontos = document.getElementById("testimonial-dots").children;
+  /* ---------- Carrossel de 5 Depoimentos dos Pais ---------- */
+  var tViewport = document.getElementById("testimonials-viewport");
+  var tTrack = document.getElementById("testimonials-track");
+  var tPrevBtn = document.getElementById("t-prev-btn");
+  var tNextBtn = document.getElementById("t-next-btn");
+  var tDotsContainer = document.getElementById("testimonials-dots");
 
-    /* Slides fora da tela não disparam o carregamento adiado sozinhos.
-       Com 11 depoimentos isso apareceria como slide em branco ao girar,
-       então o próximo é carregado antes de entrar. */
-    function garantirCarregada(idx) {
-      var slide = trilho.children[idx];
-      if (!slide) return;
-      var img = slide.querySelector("img");
-      if (img && img.getAttribute("loading") === "lazy") img.setAttribute("loading", "eager");
-    }
+  if (tViewport && tTrack) {
+    var tSlides = tTrack.children;
+    var tDots = tDotsContainer ? tDotsContainer.children : [];
+    var totalTSlides = tSlides.length;
 
-    function render() {
-      trilho.style.transform = "translateX(-" + (atual * 100) + "%)";
-      garantirCarregada(atual);
-      garantirCarregada((atual + 1) % total);
-      garantirCarregada((atual - 1 + total) % total);
-      for (var i = 0; i < pontos.length; i++) {
-        pontos[i].className = "w-3 h-3 rounded-full transition-all duration-300 " +
-          (i === atual ? "bg-primary scale-125" : "bg-muted-foreground/30 hover:bg-muted-foreground/50");
+    function atualizarTDots(idx) {
+      for (var d = 0; d < tDots.length; d++) {
+        if (d === idx) {
+          tDots[d].classList.add("active");
+        } else {
+          tDots[d].classList.remove("active");
+        }
       }
     }
-    render();
-    function proximo() { atual = (atual + 1) % total; render(); }
-    function anterior() { atual = (atual - 1 + total) % total; render(); }
 
-    carrossel.querySelector('[data-testid="button-testimonial-next"]').addEventListener("click", proximo);
-    carrossel.querySelector('[data-testid="button-testimonial-prev"]').addEventListener("click", anterior);
-    for (var p = 0; p < pontos.length; p++) {
-      (function (idx) {
-        pontos[idx].addEventListener("click", function () { atual = idx; render(); });
-      })(p);
+    function scrollParaTSlide(idx) {
+      if (idx < 0) idx = 0;
+      if (idx >= totalTSlides) idx = totalTSlides - 1;
+      var targetSlide = tSlides[idx];
+      if (targetSlide) {
+        var scrollLeft = targetSlide.offsetLeft - tTrack.offsetLeft;
+        tViewport.scrollTo({
+          left: Math.max(0, scrollLeft),
+          behavior: "smooth"
+        });
+      }
+      atualizarTDots(idx);
     }
 
-    carrossel.addEventListener("mouseenter", function () { pausado = true; });
-    carrossel.addEventListener("mouseleave", function () { pausado = false; });
-    carrossel.addEventListener("touchstart", function () { pausado = true; }, { passive: true });
-    carrossel.addEventListener("touchend", function () { pausado = false; }, { passive: true });
+    if (tPrevBtn) {
+      tPrevBtn.addEventListener("click", function () {
+        var slideWidth = tSlides[0] ? tSlides[0].offsetWidth + 24 : 340;
+        tViewport.scrollBy({ left: -slideWidth, behavior: "smooth" });
+      });
+    }
 
-    window.setInterval(function () { if (!pausado) proximo(); }, 5000);
+    if (tNextBtn) {
+      tNextBtn.addEventListener("click", function () {
+        var slideWidth = tSlides[0] ? tSlides[0].offsetWidth + 24 : 340;
+        tViewport.scrollBy({ left: slideWidth, behavior: "smooth" });
+      });
+    }
+
+    for (var td = 0; td < tDots.length; td++) {
+      (function (dotIdx) {
+        tDots[dotIdx].addEventListener("click", function () {
+          scrollParaTSlide(dotIdx);
+        });
+      })(td);
+    }
+
+    var tScrollTimer = null;
+    tViewport.addEventListener("scroll", function () {
+      if (tScrollTimer) cancelAnimationFrame(tScrollTimer);
+      tScrollTimer = requestAnimationFrame(function () {
+        var scrollPos = tViewport.scrollLeft;
+        var menorDist = Infinity;
+        var maisProximo = 0;
+        for (var s = 0; s < totalTSlides; s++) {
+          var dist = Math.abs(tSlides[s].offsetLeft - tTrack.offsetLeft - scrollPos);
+          if (dist < menorDist) {
+            menorDist = dist;
+            maisProximo = s;
+          }
+        }
+        atualizarTDots(maisProximo);
+      });
+    }, { passive: true });
   }
 
   /* ---------- Carrossel de 4 Vídeos de Experimentos ---------- */
