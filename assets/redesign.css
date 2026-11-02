@@ -2342,9 +2342,24 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 .kids-photos-marquee-wrap {
   position: relative;
   width: 100%;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   margin: 32px 0 44px;
-  padding: 12px 0;
+  padding: 14px 0 20px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y pinch-zoom;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.kids-photos-marquee-wrap:active {
+  cursor: grabbing;
+}
+
+.kids-photos-marquee-wrap::-webkit-scrollbar {
+  display: none;
 }
 
 .kids-photos-marquee-wrap::before,
@@ -2372,7 +2387,6 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   display: flex !important;
   width: max-content !important;
   will-change: transform;
-  animation: scrollKidsPhotos 25s linear infinite;
 }
 
 .kids-photos-marquee-wrap:hover .kids-photos-track {
@@ -2417,6 +2431,9 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   height: 100%;
   object-fit: cover;
   display: block;
+  pointer-events: none;
+  -webkit-user-drag: none;
+  user-select: none;
 }
 
 .kid-photo-tag {

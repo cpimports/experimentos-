@@ -409,4 +409,118 @@
     } catch (e) {}
   }
 
+
+  /* ---------- Carrossel de Fotos: Auto-scroll Contínuo + Arraste por Toque / Dedo ---------- */
+  (function initKidsPhotosCarousel() {
+    var wrap = document.getElementById("kids-photos-carousel");
+    var group1 = document.getElementById("kids-photos-group-1");
+    if (!wrap || !group1) return;
+
+    var speed = 1.35; // velocidade equilibrada de auto-scroll
+    var isDown = false;
+    var startX = 0;
+    var scrollLeftStart = 0;
+    var isPaused = false;
+    var resumeTimer = null;
+    var rafId = null;
+
+    function pause() {
+      isPaused = true;
+      if (resumeTimer) clearTimeout(resumeTimer);
+    }
+
+    function resumeAfter(delay) {
+      if (resumeTimer) clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(function () {
+        isPaused = false;
+      }, delay || 1400);
+    }
+
+    // Auto-scroll contínuo via requestAnimationFrame
+    function step() {
+      if (!isPaused && !isDown) {
+        var halfWidth = group1.offsetWidth + 24; // largura de um grupo + gap
+        if (halfWidth > 0) {
+          wrap.scrollLeft += speed;
+          if (wrap.scrollLeft >= halfWidth) {
+            wrap.scrollLeft -= halfWidth;
+          }
+        }
+      }
+      rafId = requestAnimationFrame(step);
+    }
+    rafId = requestAnimationFrame(step);
+
+    // Suporte a Toque com o Dedo (Mobile / Tablet)
+    wrap.addEventListener("touchstart", function (e) {
+      pause();
+      isDown = true;
+      startX = e.touches[0].pageX;
+      scrollLeftStart = wrap.scrollLeft;
+    }, { passive: true });
+
+    wrap.addEventListener("touchmove", function (e) {
+      if (!isDown) return;
+      var x = e.touches[0].pageX;
+      var walk = (x - startX);
+      wrap.scrollLeft = scrollLeftStart - walk;
+    }, { passive: true });
+
+    wrap.addEventListener("touchend", function () {
+      isDown = false;
+      // Normaliza para o loop infinito
+      var halfWidth = group1.offsetWidth + 24;
+      if (halfWidth > 0) {
+        if (wrap.scrollLeft >= halfWidth) {
+          wrap.scrollLeft -= halfWidth;
+        } else if (wrap.scrollLeft <= 0) {
+          wrap.scrollLeft += halfWidth;
+        }
+      }
+      resumeAfter(1600);
+    }, { passive: true });
+
+    // Suporte a Arraste com o Mouse (Desktop)
+    wrap.addEventListener("mousedown", function (e) {
+      pause();
+      isDown = true;
+      startX = e.pageX - wrap.offsetLeft;
+      scrollLeftStart = wrap.scrollLeft;
+    });
+
+    window.addEventListener("mousemove", function (e) {
+      if (!isDown) return;
+      e.preventDefault();
+      var x = e.pageX - wrap.offsetLeft;
+      var walk = (x - startX) * 1.2;
+      wrap.scrollLeft = scrollLeftStart - walk;
+    });
+
+    window.addEventListener("mouseup", function () {
+      if (isDown) {
+        isDown = false;
+        var halfWidth = group1.offsetWidth + 24;
+        if (halfWidth > 0) {
+          if (wrap.scrollLeft >= halfWidth) {
+            wrap.scrollLeft -= halfWidth;
+          } else if (wrap.scrollLeft <= 0) {
+            wrap.scrollLeft += halfWidth;
+          }
+        }
+        resumeAfter(1400);
+      }
+    });
+
+    // Pausa no hover do mouse
+    wrap.addEventListener("mouseenter", function () {
+      pause();
+    });
+
+    wrap.addEventListener("mouseleave", function () {
+      if (!isDown) {
+        resumeAfter(800);
+      }
+    });
+  })();
+
 })();

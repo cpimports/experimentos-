@@ -33,7 +33,7 @@
 
     <!-- Estilos Base & Redesign -->
     <link rel="stylesheet" href="./assets/styles.css">
-    <link rel="stylesheet" href="./assets/redesign.css?v=30">
+    <link rel="stylesheet" href="./assets/redesign.css?v=31">
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
@@ -670,68 +670,82 @@
             </p>
           </div>
 
-          <!-- Carrossel Infinito de Fotos das Crianças Fazendo Experimentos -->
-          <div class="kids-photos-marquee-wrap" aria-label="Fotos de Crianças Fazendo os Experimentos">
-            <div class="kids-photos-track">
+          <!-- Carrossel Interativo de Fotos das Crianças (Auto-scroll + Arraste por Toque) -->
+          <div class="kids-photos-marquee-wrap" id="kids-photos-carousel" aria-label="Fotos de Crianças Fazendo os Experimentos">
+            <div class="kids-photos-track" id="kids-photos-track">
               <!-- Grupo 1 -->
-              <div class="kids-photos-group">
+              <div class="kids-photos-group" id="kids-photos-group-1">
+                <!-- 1. Conexão Pai & Filho + Efeito Uau das Cores -->
                 <div class="kid-photo-item">
-                  <img src="./assets/experimento-foto-1.jpg" alt="Criança fascinada com reação química brilhante" loading="lazy">
+                  <img src="./assets/experimento-foto-2.jpg" alt="Pai e filho fazendo a espuma arco-íris gigante" loading="lazy" draggable="false">
+                  <span class="kid-photo-tag">Super Espuma Arco-Íris 🌈</span>
+                </div>
+                <!-- 2. Expressão de Choque & Encantamento Pessoal -->
+                <div class="kid-photo-item">
+                  <img src="./assets/experimento-foto-1.jpg" alt="Criança fascinada com reação química brilhante" loading="lazy" draggable="false">
                   <span class="kid-photo-tag">Reação Surpreendente ✨</span>
                 </div>
+                <!-- 3. Erupção Gigante & Sorriso Contagiante -->
                 <div class="kid-photo-item">
-                  <img src="./assets/experimento-foto-6.jpg" alt="Menina animada com torre de espuma em erupção" loading="lazy">
+                  <img src="./assets/experimento-foto-6.jpg" alt="Menina animada com torre de espuma em erupção" loading="lazy" draggable="false">
                   <span class="kid-photo-tag">Vulcão de Espuma 🌋</span>
                 </div>
+                <!-- 4. Irmãos / Colegas & Curiosidade Ativa -->
                 <div class="kid-photo-item">
-                  <img src="./assets/experimento-foto-2.jpg" alt="Pai e filho fazendo a espuma arco-íris gigante" loading="lazy">
-                  <span class="kid-photo-tag">Espuma Arco-Íris 🌈</span>
-                </div>
-                <div class="kid-photo-item">
-                  <img src="./assets/experimento-foto-3.jpg" alt="Crianças com o balão que enche sozinho" loading="lazy">
+                  <img src="./assets/experimento-foto-3.jpg" alt="Crianças com o balão que enche sozinho" loading="lazy" draggable="false">
                   <span class="kid-photo-tag">Balão que Enche Sozinho 🎈</span>
                 </div>
+                <!-- 5. Orgulho da Criação & Cores Vibrantes -->
                 <div class="kid-photo-item">
-                  <img src="./assets/experimento-foto-7.jpg" alt="Menina sorridente com experimento de espuma colorida" loading="lazy">
+                  <img src="./assets/experimento-foto-7.jpg" alt="Menina sorridente com experimento de espuma colorida" loading="lazy" draggable="false">
                   <span class="kid-photo-tag">Cascata Colorida 🧪</span>
                 </div>
+                <!-- 6. Tempo de Qualidade com a Família Toda -->
                 <div class="kid-photo-item">
-                  <img src="./assets/experimento-foto-4.jpg" alt="Família reunida fazendo experimento com vela" loading="lazy">
+                  <img src="./assets/experimento-foto-4.jpg" alt="Família reunida fazendo experimento com vela" loading="lazy" draggable="false">
                   <span class="kid-photo-tag">Ciência em Família 🕯️</span>
                 </div>
+                <!-- 7. Concentração & Descoberta Prática -->
                 <div class="kid-photo-item">
-                  <img src="./assets/experimento-foto-5.jpg" alt="Menino com experimento da garrafa colorida" loading="lazy">
+                  <img src="./assets/experimento-foto-5.jpg" alt="Menino com experimento da garrafa colorida" loading="lazy" draggable="false">
                   <span class="kid-photo-tag">Garrafa das Descobertas 🚀</span>
                 </div>
               </div>
               <!-- Grupo 2 (Duplicado para loop contínuo infinito) -->
-              <div class="kids-photos-group" aria-hidden="true">
+              <div class="kids-photos-group" id="kids-photos-group-2" aria-hidden="true">
+                <!-- 1. Conexão Pai & Filho + Efeito Uau das Cores -->
                 <div class="kid-photo-item">
-                  <img src="./assets/experimento-foto-1.jpg" alt="Criança fascinada com reação química brilhante" loading="lazy">
+                  <img src="./assets/experimento-foto-2.jpg" alt="Pai e filho fazendo a espuma arco-íris gigante" loading="lazy" draggable="false">
+                  <span class="kid-photo-tag">Super Espuma Arco-Íris 🌈</span>
+                </div>
+                <!-- 2. Expressão de Choque & Encantamento Pessoal -->
+                <div class="kid-photo-item">
+                  <img src="./assets/experimento-foto-1.jpg" alt="Criança fascinada com reação química brilhante" loading="lazy" draggable="false">
                   <span class="kid-photo-tag">Reação Surpreendente ✨</span>
                 </div>
+                <!-- 3. Erupção Gigante & Sorriso Contagiante -->
                 <div class="kid-photo-item">
-                  <img src="./assets/experimento-foto-6.jpg" alt="Menina animada com torre de espuma em erupção" loading="lazy">
+                  <img src="./assets/experimento-foto-6.jpg" alt="Menina animada com torre de espuma em erupção" loading="lazy" draggable="false">
                   <span class="kid-photo-tag">Vulcão de Espuma 🌋</span>
                 </div>
+                <!-- 4. Irmãos / Colegas & Curiosidade Ativa -->
                 <div class="kid-photo-item">
-                  <img src="./assets/experimento-foto-2.jpg" alt="Pai e filho fazendo a espuma arco-íris gigante" loading="lazy">
-                  <span class="kid-photo-tag">Espuma Arco-Íris 🌈</span>
-                </div>
-                <div class="kid-photo-item">
-                  <img src="./assets/experimento-foto-3.jpg" alt="Crianças com o balão que enche sozinho" loading="lazy">
+                  <img src="./assets/experimento-foto-3.jpg" alt="Crianças com o balão que enche sozinho" loading="lazy" draggable="false">
                   <span class="kid-photo-tag">Balão que Enche Sozinho 🎈</span>
                 </div>
+                <!-- 5. Orgulho da Criação & Cores Vibrantes -->
                 <div class="kid-photo-item">
-                  <img src="./assets/experimento-foto-7.jpg" alt="Menina sorridente com experimento de espuma colorida" loading="lazy">
+                  <img src="./assets/experimento-foto-7.jpg" alt="Menina sorridente com experimento de espuma colorida" loading="lazy" draggable="false">
                   <span class="kid-photo-tag">Cascata Colorida 🧪</span>
                 </div>
+                <!-- 6. Tempo de Qualidade com a Família Toda -->
                 <div class="kid-photo-item">
-                  <img src="./assets/experimento-foto-4.jpg" alt="Família reunida fazendo experimento com vela" loading="lazy">
+                  <img src="./assets/experimento-foto-4.jpg" alt="Família reunida fazendo experimento com vela" loading="lazy" draggable="false">
                   <span class="kid-photo-tag">Ciência em Família 🕯️</span>
                 </div>
+                <!-- 7. Concentração & Descoberta Prática -->
                 <div class="kid-photo-item">
-                  <img src="./assets/experimento-foto-5.jpg" alt="Menino com experimento da garrafa colorida" loading="lazy">
+                  <img src="./assets/experimento-foto-5.jpg" alt="Menino com experimento da garrafa colorida" loading="lazy" draggable="false">
                   <span class="kid-photo-tag">Garrafa das Descobertas 🚀</span>
                 </div>
               </div>
@@ -1552,6 +1566,6 @@
     <script src="./assets/beaker-animation.js?v=14"></script>
 
     <!-- Scripts com comportamentos interativos -->
-    <script src="./assets/script.js?v=8"></script>
+    <script src="./assets/script.js?v=9"></script>
   </body>
 </html>
