@@ -2037,6 +2037,13 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   margin: 40px auto 0;
 }
 
+.bonus-grid > .bonus-card-visual:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  max-width: 474px;
+  justify-self: center;
+  width: 100%;
+}
+
 @media (max-width: 768px) {
   .bonus-grid {
     grid-template-columns: 1fr;
