@@ -38,20 +38,18 @@
     }
     </script>
 
-
-    <!-- Panda Video: pré-conexão -->
-    <link rel="preconnect" href="https://player-vz-d0969e7f-264.tv.pandavideo.com.br">
-    <link rel="preconnect" href="https://b-vz-d0969e7f-264.tv.pandavideo.com.br">
-    <link rel="dns-prefetch" href="https://config.tv.pandavideo.com.br">
-
-    <!-- Tipografia Premium: Nunito & Plus Jakarta Sans -->
+    <!-- Tipografia Premium: Nunito & Plus Jakarta Sans (Carregamento Otimizado Não-Bloqueante) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+    </noscript>
 
     <!-- Estilos Base & Redesign -->
     <link rel="stylesheet" href="./assets/styles.css">
-    <link rel="stylesheet" href="./assets/redesign.css?v=45">
+    <link rel="stylesheet" href="./assets/redesign.css?v=46">
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
@@ -89,7 +87,7 @@
             <!-- Imagem do Guia (+300 Experimentos) -->
             <div class="hero-mockup-container">
               <div class="hero-mockup-wrapper">
-                <img src="./assets/capa-experimentos-nova.webp" alt="+300 Experimentos Científicos para Crianças" class="hero-mockup-img" data-testid="img-ebook-showcase" loading="eager" decoding="async">
+                <img src="./assets/capa-experimentos-nova.webp" alt="+300 Experimentos Científicos para Crianças" class="hero-mockup-img" data-testid="img-ebook-showcase" width="819" height="1024" fetchpriority="high" loading="eager" decoding="async">
               </div>
             </div>
 
@@ -228,6 +226,7 @@
               <img src="./assets/comparacao-antes-depois.jpg" 
                    alt="Comparação Antes vs Depois: das telas para momentos de conexão e descobertas em família" 
                    class="comparison-frame-image" 
+                   width="1024" height="682" 
                    loading="lazy" 
                    decoding="async">
             </div>
@@ -506,6 +505,7 @@
             <img src="./assets/receita-da-magica.jpg" 
                  alt="A mágica começa na sua cozinha: Bicarbonato + Vinagre + Detergente + Corante = Mágica! Itens comuns de casa, sem preparação complicada. Realize sempre com a supervisão de um adulto." 
                  class="magic-recipe-img"
+                 width="1024" height="682"
                  loading="lazy"
                  decoding="async">
           </div>
@@ -600,27 +600,27 @@
 
             <!-- 1º Bônus -->
             <div class="bonus-card-visual" data-testid="section-bonus-1">
-              <img src="./assets/bonus-card-1.webp" alt="1º Bônus Exclusivo - 100 Truques de Mágica para Crianças" loading="lazy" decoding="async">
+              <img src="./assets/bonus-card-1.webp" alt="1º Bônus Exclusivo - 100 Truques de Mágica para Crianças" width="935" height="1024" loading="lazy" decoding="async">
             </div>
 
             <!-- 2º Bônus -->
             <div class="bonus-card-visual" data-testid="section-bonus-2">
-              <img src="./assets/bonus-card-2.webp" alt="2º Bônus Exclusivo - 50 Brincadeiras Criativas Longe das Telas" loading="lazy" decoding="async">
+              <img src="./assets/bonus-card-2.webp" alt="2º Bônus Exclusivo - 50 Brincadeiras Criativas Longe das Telas" width="935" height="1024" loading="lazy" decoding="async">
             </div>
 
             <!-- 3º Bônus -->
             <div class="bonus-card-visual" data-testid="section-bonus-3">
-              <img src="./assets/bonus-card-3.webp" alt="3º Bônus Exclusivo - 27 Mágicas com Cartas Passo a Passo" loading="lazy" decoding="async">
+              <img src="./assets/bonus-card-3.webp" alt="3º Bônus Exclusivo - 27 Mágicas com Cartas Passo a Passo" width="935" height="1024" loading="lazy" decoding="async">
             </div>
 
             <!-- 4º Bônus -->
             <div class="bonus-card-visual" data-testid="section-bonus-4">
-              <img src="./assets/bonus-card-4.webp" alt="4º Bônus Exclusivo - 50 Piadas Divertidas para Crianças" loading="lazy" decoding="async">
+              <img src="./assets/bonus-card-4.webp" alt="4º Bônus Exclusivo - 50 Piadas Divertidas para Crianças" width="935" height="1024" loading="lazy" decoding="async">
             </div>
 
             <!-- 5º Bônus -->
             <div class="bonus-card-visual" data-testid="section-bonus-5">
-              <img src="./assets/bonus-card-5.webp" alt="5º Bônus Exclusivo - Certificado do Pequeno Cientista" loading="lazy" decoding="async">
+              <img src="./assets/bonus-card-5.webp" alt="5º Bônus Exclusivo - Certificado do Pequeno Cientista" width="935" height="1024" loading="lazy" decoding="async">
             </div>
 
           </div>
@@ -700,43 +700,43 @@
 
                 <!-- 1. Conexão Pai & Filho + Efeito Uau das Cores -->
                 <div class="kid-photo-item">
-                  <img src="./assets/experimento-foto-2.jpg" alt="Pai e filho fazendo a espuma arco-íris gigante" loading="lazy">
+                  <img src="./assets/experimento-foto-2.jpg" alt="Pai e filho fazendo a espuma arco-íris gigante" width="623" height="1024" loading="lazy" decoding="async">
                   <span class="kid-photo-tag">Super Espuma Arco-Íris 🌈</span>
                 </div>
 
                 <!-- 2. Expressão de Choque & Encantamento Pessoal -->
                 <div class="kid-photo-item">
-                  <img src="./assets/experimento-foto-1.jpg" alt="Criança fascinada com reação química brilhante" loading="lazy">
+                  <img src="./assets/experimento-foto-1.jpg" alt="Criança fascinada com reação química brilhante" width="332" height="526" loading="lazy" decoding="async">
                   <span class="kid-photo-tag">Reação Surpreendente ✨</span>
                 </div>
 
                 <!-- 3. Erupção Gigante & Sorriso Contagiante -->
                 <div class="kid-photo-item">
-                  <img src="./assets/experimento-foto-6.jpg" alt="Menina animada com torre de espuma em erupção" loading="lazy">
+                  <img src="./assets/experimento-foto-6.jpg" alt="Menina animada com torre de espuma em erupção" width="596" height="1024" loading="lazy" decoding="async">
                   <span class="kid-photo-tag">Vulcão de Espuma 🌋</span>
                 </div>
 
                 <!-- 4. Irmãos / Colegas & Curiosidade Ativa -->
                 <div class="kid-photo-item">
-                  <img src="./assets/experimento-foto-3.jpg" alt="Crianças com o balão que enche sozinho" loading="lazy">
+                  <img src="./assets/experimento-foto-3.jpg" alt="Crianças com o balão que enche sozinho" width="586" height="1024" loading="lazy" decoding="async">
                   <span class="kid-photo-tag">Balão que Enche Sozinho 🎈</span>
                 </div>
 
                 <!-- 5. Orgulho da Criação & Cores Vibrantes -->
                 <div class="kid-photo-item">
-                  <img src="./assets/experimento-foto-7.jpg" alt="Menina sorridente com experimento de espuma colorida" loading="lazy">
+                  <img src="./assets/experimento-foto-7.jpg" alt="Menina sorridente com experimento de espuma colorida" width="648" height="1024" loading="lazy" decoding="async">
                   <span class="kid-photo-tag">Cascata Colorida 🧪</span>
                 </div>
 
                 <!-- 6. Tempo de Qualidade com a Família Toda -->
                 <div class="kid-photo-item">
-                  <img src="./assets/experimento-foto-4.jpg" alt="Família reunida fazendo experimento com vela" loading="lazy">
+                  <img src="./assets/experimento-foto-4.jpg" alt="Família reunida fazendo experimento com vela" width="757" height="1024" loading="lazy" decoding="async">
                   <span class="kid-photo-tag">Ciência em Família 🕯️</span>
                 </div>
 
                 <!-- 7. Concentração & Descoberta Prática -->
                 <div class="kid-photo-item">
-                  <img src="./assets/experimento-foto-5.jpg" alt="Menino com experimento da garrafa colorida" loading="lazy">
+                  <img src="./assets/experimento-foto-5.jpg" alt="Menino com experimento da garrafa colorida" width="713" height="1024" loading="lazy" decoding="async">
                   <span class="kid-photo-tag">Garrafa das Descobertas 🚀</span>
                 </div>
 
@@ -777,7 +777,7 @@
               </blockquote>
               <div class="testimonial-author">
                 <div class="author-avatar-img-wrap">
-                  <img src="./assets/depo-avatar-1.webp" alt="Foto de Camila R." class="author-avatar-img" loading="lazy" decoding="async">
+                  <img src="./assets/depo-avatar-1.webp" alt="Foto de Camila R." class="author-avatar-img" width="120" height="101" loading="lazy" decoding="async">
                 </div>
                 <div class="author-info">
                   <span class="author-name">Camila R.</span>
@@ -800,7 +800,7 @@
               </blockquote>
               <div class="testimonial-author">
                 <div class="author-avatar-img-wrap">
-                  <img src="./assets/depo-avatar-2.webp" alt="Foto de Rodrigo M." class="author-avatar-img" loading="lazy" decoding="async">
+                  <img src="./assets/depo-avatar-2.webp" alt="Foto de Rodrigo M." class="author-avatar-img" width="40" height="40" loading="lazy" decoding="async">
                 </div>
                 <div class="author-info">
                   <span class="author-name">Rodrigo M.</span>
@@ -823,7 +823,7 @@
               </blockquote>
               <div class="testimonial-author">
                 <div class="author-avatar-img-wrap">
-                  <img src="./assets/depo-avatar-3.webp" alt="Foto de Mariana S." class="author-avatar-img" loading="lazy" decoding="async">
+                  <img src="./assets/depo-avatar-3.webp" alt="Foto de Mariana S." class="author-avatar-img" width="120" height="72" loading="lazy" decoding="async">
                 </div>
                 <div class="author-info">
                   <span class="author-name">Mariana S.</span>
@@ -850,7 +850,7 @@
           <div class="section-guarantee-wrap" data-testid="section-guarantee">
             <div class="guarantee-card">
               <div class="guarantee-img-wrap">
-                <img src="./assets/guarantee.webp" alt="Garantia de 7 dias - Gêniozinho em Ação" data-testid="img-guarantee" loading="lazy" decoding="async">
+                <img src="./assets/guarantee.webp" alt="Garantia de 7 dias - Gêniozinho em Ação" data-testid="img-guarantee" width="1536" height="1024" loading="lazy" decoding="async">
               </div>
               <div data-testid="section-guarantee-text">
                 <h3 class="guarantee-title">Satisfação Garantida ou 100% do seu Dinheiro de Volta</h3>
@@ -1585,13 +1585,8 @@
         &times;
       </button>
     </div>
-
-
-    <!-- GSAP & ScrollTrigger (Animação Científica Interativa) -->
-    <script src="./assets/gsap.min.js" defer></script>
-    <script src="./assets/ScrollTrigger.min.js" defer></script>
     <script src="./assets/beaker-animation.js?v=14" defer></script>
 
     <!-- Scripts com comportamentos interativos -->
-    <script src="./assets/script.js?v=17" defer></script></body>
+    <script src="./assets/script.js?v=18" defer></script></body>
 </html>

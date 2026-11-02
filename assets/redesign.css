@@ -4223,7 +4223,7 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 
 @media (max-width: 640px) {
   .sales-toast {
-    bottom: 16px;
+    bottom: 84px;
     left: 14px;
     right: auto;
     max-width: calc(100% - 28px);
@@ -4245,4 +4245,15 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   .sales-toast-text {
     font-size: 0.86rem;
   }
+}
+
+/* Otimização de Performance Mobile */
+.detailed-content-section,
+.bonus-section,
+.video-carousel-section,
+.testimonials-section,
+.author-section,
+.faq-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 650px;
 }
