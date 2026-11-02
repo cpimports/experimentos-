@@ -397,5 +397,16 @@
       }
     });
   }
+  /* Repasse automático de parâmetros de rastreamento (UTMs) para o checkout */
+  var checkoutBtn = document.querySelector('[data-testid="button-checkout"]');
+  if (checkoutBtn && window.location.search) {
+    try {
+      var currentHref = checkoutBtn.getAttribute("href") || "";
+      if (currentHref) {
+        var sep = currentHref.indexOf("?") === -1 ? "?" : "&";
+        checkoutBtn.setAttribute("href", currentHref + sep + window.location.search.substring(1));
+      }
+    } catch (e) {}
+  }
 
 })();
