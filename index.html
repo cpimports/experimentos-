@@ -33,7 +33,7 @@
 
     <!-- Estilos Base & Redesign -->
     <link rel="stylesheet" href="./assets/styles.css">
-    <link rel="stylesheet" href="./assets/redesign.css?v=15">
+    <link rel="stylesheet" href="./assets/redesign.css?v=16">
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
@@ -661,7 +661,7 @@
         <div class="container mx-auto px-4 max-w-6xl">
 
           <!-- Cabeçalho da Seção -->
-          <div class="text-center mb-8 md:mb-12">
+          <div class="text-center mb-6 md:mb-8">
             <h2 class="section-title">
               Quem experimenta, se encanta! <span class="text-heart">❤️</span>
             </h2>
@@ -670,7 +670,75 @@
             </p>
           </div>
 
-          <!-- Carrossel de 5 Depoimentos -->
+          <!-- Carrossel Infinito de Fotos das Crianças Fazendo Experimentos -->
+          <div class="kids-photos-marquee-wrap" aria-label="Fotos de Crianças Fazendo os Experimentos">
+            <div class="kids-photos-track">
+              <!-- Grupo 1 -->
+              <div class="kids-photos-group">
+                <div class="kid-photo-item">
+                  <img src="./assets/capa-experimento-do-vulcao.jpg" alt="Criança fazendo o experimento do vulcão" loading="lazy">
+                  <span class="kid-photo-tag">Experimento do Vulcão 🌋</span>
+                </div>
+                <div class="kid-photo-item">
+                  <img src="./assets/capa-monstrinho-de-lava.jpg" alt="Criança com o monstrinho de lava" loading="lazy">
+                  <span class="kid-photo-tag">Monstrinho de Lava 🧪</span>
+                </div>
+                <div class="kid-photo-item">
+                  <img src="./assets/capa-experiencia-do-balao.jpg" alt="Crianças com o balão voador" loading="lazy">
+                  <span class="kid-photo-tag">Experiência do Balão 🎈</span>
+                </div>
+                <div class="kid-photo-item">
+                  <img src="./assets/capa-garrafa-das-cores.jpg" alt="Criança com a garrafa das cores" loading="lazy">
+                  <span class="kid-photo-tag">Garrafa das Cores ✨</span>
+                </div>
+                <div class="kid-photo-item">
+                  <img src="./assets/capa-misterio-da-agua.jpg" alt="Crianças com o mistério da água" loading="lazy">
+                  <span class="kid-photo-tag">Mistério da Água 💧</span>
+                </div>
+                <div class="kid-photo-item">
+                  <img src="./assets/capa-pozinhos-magicos.jpg" alt="Família com os pózinhos mágicos" loading="lazy">
+                  <span class="kid-photo-tag">Pózinhos Mágicos 🔮</span>
+                </div>
+                <div class="kid-photo-item">
+                  <img src="./assets/child-happy.webp" alt="Criança feliz fazendo ciência" loading="lazy">
+                  <span class="kid-photo-tag">Descoberta em Família 🌟</span>
+                </div>
+              </div>
+              <!-- Grupo 2 (Duplicado para loop contínuo infinito) -->
+              <div class="kids-photos-group" aria-hidden="true">
+                <div class="kid-photo-item">
+                  <img src="./assets/capa-experimento-do-vulcao.jpg" alt="Criança fazendo o experimento do vulcão" loading="lazy">
+                  <span class="kid-photo-tag">Experimento do Vulcão 🌋</span>
+                </div>
+                <div class="kid-photo-item">
+                  <img src="./assets/capa-monstrinho-de-lava.jpg" alt="Criança com o monstrinho de lava" loading="lazy">
+                  <span class="kid-photo-tag">Monstrinho de Lava 🧪</span>
+                </div>
+                <div class="kid-photo-item">
+                  <img src="./assets/capa-experiencia-do-balao.jpg" alt="Crianças com o balão voador" loading="lazy">
+                  <span class="kid-photo-tag">Experiência do Balão 🎈</span>
+                </div>
+                <div class="kid-photo-item">
+                  <img src="./assets/capa-garrafa-das-cores.jpg" alt="Criança com a garrafa das cores" loading="lazy">
+                  <span class="kid-photo-tag">Garrafa das Cores ✨</span>
+                </div>
+                <div class="kid-photo-item">
+                  <img src="./assets/capa-misterio-da-agua.jpg" alt="Crianças com o mistério da água" loading="lazy">
+                  <span class="kid-photo-tag">Mistério da Água 💧</span>
+                </div>
+                <div class="kid-photo-item">
+                  <img src="./assets/capa-pozinhos-magicos.jpg" alt="Família com os pózinhos mágicos" loading="lazy">
+                  <span class="kid-photo-tag">Pózinhos Mágicos 🔮</span>
+                </div>
+                <div class="kid-photo-item">
+                  <img src="./assets/child-happy.webp" alt="Criança feliz fazendo ciência" loading="lazy">
+                  <span class="kid-photo-tag">Descoberta em Família 🌟</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Carrossel de Depoimentos em Quadrado -->
           <div class="testimonials-carousel-wrapper" id="testimonials-carousel">
             <!-- Botão Anterior (Desktop) -->
             <button class="t-carousel-arrow prev" id="t-prev-btn" aria-label="Depoimento anterior" type="button">
@@ -680,7 +748,7 @@
             <div class="testimonials-carousel-viewport" id="testimonials-viewport">
               <div class="testimonials-carousel-track" id="testimonials-track">
 
-                <!-- Depoimento 1 -->
+                <!-- Depoimento 1 (Quadrado) -->
                 <div class="testimonial-slide" data-slide-index="0">
                   <div class="testimonial-card">
                     <div class="testimonial-stars" aria-label="Avaliação 5 estrelas">
@@ -691,7 +759,7 @@
                       <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                     </div>
                     <blockquote class="testimonial-quote">
-                      "Minha filha de 6 anos não largava o tablet aos fins de semana. Começamos a fazer as experiências juntos e agora ela que pede para fazer a 'hora da ciência'! Ver os olhos dela brilhando não tem preço."
+                      "Minha filha de 6 anos não largava o tablet aos fins de semana. Começamos a fazer as experiências juntos e agora ela que pede a 'hora da ciência'! Ver os olhos dela brilhando não tem preço."
                     </blockquote>
                     <div class="testimonial-author">
                       <div class="author-avatar" aria-hidden="true">CR</div>
@@ -703,7 +771,7 @@
                   </div>
                 </div>
 
-                <!-- Depoimento 2 -->
+                <!-- Depoimento 2 (Quadrado) -->
                 <div class="testimonial-slide" data-slide-index="1">
                   <div class="testimonial-card">
                     <div class="testimonial-stars" aria-label="Avaliação 5 estrelas">
@@ -714,7 +782,7 @@
                       <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                     </div>
                     <blockquote class="testimonial-quote">
-                      "O melhor de tudo é que realmente usamos coisas comuns da cozinha: bicarbonato, vinagre, detergente e corante. Não precisei gastar nada extra e fizemos uma tarde inteira de diversão!"
+                      "O melhor é que usamos coisas comuns da cozinha: bicarbonato, vinagre, detergente e corante. Não precisei gastar nada extra e fizemos uma tarde inteira de descobertas incríveis!"
                     </blockquote>
                     <div class="testimonial-author">
                       <div class="author-avatar" aria-hidden="true">RM</div>
@@ -726,7 +794,7 @@
                   </div>
                 </div>
 
-                <!-- Depoimento 3 -->
+                <!-- Depoimento 3 (Quadrado) -->
                 <div class="testimonial-slide" data-slide-index="2">
                   <div class="testimonial-card">
                     <div class="testimonial-stars" aria-label="Avaliação 5 estrelas">
@@ -737,7 +805,7 @@
                       <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                     </div>
                     <blockquote class="testimonial-quote">
-                      "Tenho dois filhos com idades diferentes (5 e 9 anos) e foi incrível achar algo que prendeu a atenção dos dois ao mesmo tempo. As explicações de 'por que acontece' são simples e educativas."
+                      "Tenho dois filhos com idades diferentes (5 e 9 anos) e foi incrível achar algo que prendeu a atenção dos dois. As explicações de 'por que acontece' são fáceis e muito educativas."
                     </blockquote>
                     <div class="testimonial-author">
                       <div class="author-avatar" aria-hidden="true">MS</div>
@@ -749,7 +817,7 @@
                   </div>
                 </div>
 
-                <!-- Depoimento 4 -->
+                <!-- Depoimento 4 (Quadrado) -->
                 <div class="testimonial-slide" data-slide-index="3">
                   <div class="testimonial-card">
                     <div class="testimonial-stars" aria-label="Avaliação 5 estrelas">
@@ -760,7 +828,7 @@
                       <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                     </div>
                     <blockquote class="testimonial-quote">
-                      "O formato em PDF com passo a passo ilustrado facilitou muito. Meu filho adorou preencher o Certificado de Pequeno Cientista no final, ele ficou super orgulhoso mostrando pros avós!"
+                      "O formato com passo a passo ilustrado facilitou muito. Meu filho adorou preencher o Certificado de Pequeno Cientista no final, ele ficou super orgulhoso mostrando pra família!"
                     </blockquote>
                     <div class="testimonial-author">
                       <div class="author-avatar" aria-hidden="true">FL</div>
@@ -772,7 +840,7 @@
                   </div>
                 </div>
 
-                <!-- Depoimento 5 -->
+                <!-- Depoimento 5 (Quadrado) -->
                 <div class="testimonial-slide" data-slide-index="4">
                   <div class="testimonial-card">
                     <div class="testimonial-stars" aria-label="Avaliação 5 estrelas">
@@ -783,7 +851,7 @@
                       <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                     </div>
                     <blockquote class="testimonial-quote">
-                      "Material muito caprichado e seguro. Fazer o vulcão e a experiência do balão virou nosso ritual de sábado. Valeu cada centavo pelo tempo de qualidade que ganhamos em família."
+                      "Material muito caprichado e seguro. Fazer o vulcão e a experiência do balão virou nosso ritual de sábado. Valeu cada centavo pelo tempo de qualidade que ganhamos em casa."
                     </blockquote>
                     <div class="testimonial-author">
                       <div class="author-avatar" aria-hidden="true">EP</div>
