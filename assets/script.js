@@ -683,8 +683,8 @@
     }, { passive: true });
   })();
 
-  /* ---------- Notificações de Vendas Recentes (Prova Social) ---------- */
-  (function initSalesToast() {
+  /* ---------- Notificações de Vendas Recentes (Prova Social - Canto Inferior Esquerdo) ---------- */
+  function startSalesToast() {
     var toast = document.getElementById("sales-toast");
     var nameEl = document.getElementById("sales-toast-name");
     var closeBtn = document.getElementById("sales-toast-close");
@@ -717,7 +717,7 @@
       "Eduardo Nogueira"
     ];
 
-    // Embaralhar ordem dos nomes para alternar dinamicamente
+    // Embaralha os nomes para ordem dinâmica
     var shuffled = nomes.slice().sort(function () { return Math.random() - 0.5; });
     var currentIndex = 0;
     var timerHide = null;
@@ -737,14 +737,16 @@
       timerHide = setTimeout(function () {
         toast.classList.remove("is-active");
 
-        // Intervalo aleatório para a próxima notificação (entre 8s e 15s)
-        var nextDelay = Math.floor(Math.random() * 7000) + 8000;
+        // Intervalo aleatório para a próxima notificação (entre 6s e 11s)
+        var nextDelay = Math.floor(Math.random() * 5000) + 6000;
         timerNext = setTimeout(showNotification, nextDelay);
       }, 4500);
     }
 
     if (closeBtn) {
-      closeBtn.addEventListener("click", function () {
+      closeBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
         isDismissed = true;
         toast.classList.remove("is-active");
         if (timerHide) clearTimeout(timerHide);
@@ -752,8 +754,14 @@
       });
     }
 
-    // Primeira notificação surge suavemente após 5 segundos da visita
-    timerNext = setTimeout(showNotification, 5000);
-  })();
+    // Primeira notificação surge com agilidade (1.8 segundos após carregar)
+    timerNext = setTimeout(showNotification, 1800);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", startSalesToast);
+  } else {
+    startSalesToast();
+  }
 
 })();
