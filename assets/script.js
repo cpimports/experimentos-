@@ -67,6 +67,15 @@
      Fica escondido enquanto o botão do hero está visível (seria redundante)
      e entra assim que ele sai da tela por cima. */
   var ctaFixo = document.getElementById("cta-fixo");
+  var botoesOferta = document.querySelectorAll('[data-testid="button-cta-section4"], [data-testid="button-cta-bonus"], [data-testid="button-cta-testimonials"]');
+  for (var b = 0; b < botoesOferta.length; b++) {
+    botoesOferta[b].addEventListener("click", function () {
+      var alvo = document.getElementById("oferta");
+      if (alvo) {
+        alvo.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  }
   var botaoHero = document.querySelector('[data-testid="button-cta-hero"]');
   if (botaoHero) {
     botaoHero.addEventListener("click", function () {

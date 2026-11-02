@@ -3921,3 +3921,9 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 }
 
 
+
+
+/* Scroll Margin para a Seção de Oferta */
+#oferta {
+  scroll-margin-top: 50px;
+}
