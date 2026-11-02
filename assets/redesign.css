@@ -2646,27 +2646,37 @@ h1, h2, h3, h4, h5, h6, .font-heading {
     line-height: 1.55;
   }
 
-  .kids-carousel-wrapper {
+    .kids-carousel-wrapper {
+    position: relative;
     padding: 0;
-    margin: 24px 0 36px;
+    margin: 24px -16px 36px;
+    width: calc(100% + 32px);
+    max-width: calc(100% + 32px);
   }
 
   .kids-carousel-viewport {
-    padding: 12px 18px 20px;
-    scroll-padding-left: 18px;
+    width: 100%;
+    padding: 12px 0 20px;
+    scroll-padding: 0;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
 
   .kids-carousel-track {
     gap: 16px;
-    padding-right: 32px;
+    padding-left: calc(50vw - 130px);
+    padding-right: calc(50vw - 130px);
   }
 
   .kid-photo-item {
-    flex: 0 0 250px;
-    width: 250px;
-    height: 335px;
-    border-radius: 20px;
+    flex: 0 0 260px;
+    width: 260px;
+    height: 350px;
+    border-radius: 22px;
     border-width: 3px;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
   }
 
   .kids-carousel-arrow {

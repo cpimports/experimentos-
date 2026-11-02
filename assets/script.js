@@ -410,7 +410,7 @@
   }
 
 
-  /* ---------- Carrossel de Fotos: Setas Infinitas (Volta ao Início) + Bolinhas + Peek + Toque ---------- */
+  /* ---------- Carrossel de Fotos: Centralizado no Celular + Setas Infinitas + Bolinhas + Toque ---------- */
   (function initKidsPhotosCarousel() {
     var viewport = document.getElementById("kids-photos-viewport");
     var prevBtn = document.getElementById("kids-prev-btn");
@@ -420,24 +420,50 @@
 
     var dots = dotsContainer ? dotsContainer.querySelectorAll(".kdot") : [];
     var items = viewport.querySelectorAll(".kid-photo-item");
+    if (!items.length) return;
 
-    function getStep() {
-      var first = viewport.querySelector(".kid-photo-item");
-      return first ? (first.offsetWidth + 20) : 320;
+    function getActiveIndex() {
+      var isMobile = window.innerWidth <= 768;
+      var targetCenter = isMobile
+        ? (viewport.scrollLeft + viewport.clientWidth / 2)
+        : (viewport.scrollLeft + 40);
+      var closestIdx = 0;
+      var minDiff = Infinity;
+
+      for (var i = 0; i < items.length; i++) {
+        var itemPos = isMobile
+          ? (items[i].offsetLeft + items[i].offsetWidth / 2)
+          : (items[i].offsetLeft - viewport.offsetLeft);
+        var diff = Math.abs(itemPos - targetCenter);
+        if (diff < minDiff) {
+          minDiff = diff;
+          closestIdx = i;
+        }
+      }
+      return closestIdx;
     }
 
-    function getMaxScroll() {
-      return viewport.scrollWidth - viewport.clientWidth;
+    function scrollToIndex(idx) {
+      if (idx < 0) idx = 0;
+      if (idx >= items.length) idx = items.length - 1;
+      var isMobile = window.innerWidth <= 768;
+      var targetScroll;
+      if (isMobile) {
+        targetScroll = items[idx].offsetLeft - (viewport.clientWidth - items[idx].offsetWidth) / 2;
+      } else {
+        targetScroll = items[idx].offsetLeft - viewport.offsetLeft;
+      }
+      viewport.scrollTo({ left: targetScroll, behavior: "smooth" });
     }
 
     // Ao avançar na última foto, volta suavemente para a primeira foto
     if (nextBtn) {
       nextBtn.addEventListener("click", function () {
-        var max = getMaxScroll();
-        if (viewport.scrollLeft >= max - 15) {
-          viewport.scrollTo({ left: 0, behavior: "smooth" });
+        var cur = getActiveIndex();
+        if (cur >= items.length - 1) {
+          scrollToIndex(0);
         } else {
-          viewport.scrollBy({ left: getStep(), behavior: "smooth" });
+          scrollToIndex(cur + 1);
         }
       });
     }
@@ -445,31 +471,21 @@
     // Ao recuar na primeira foto, vai suavemente para a última foto
     if (prevBtn) {
       prevBtn.addEventListener("click", function () {
-        if (viewport.scrollLeft <= 15) {
-          viewport.scrollTo({ left: getMaxScroll(), behavior: "smooth" });
+        var cur = getActiveIndex();
+        if (cur <= 0) {
+          scrollToIndex(items.length - 1);
         } else {
-          viewport.scrollBy({ left: -getStep(), behavior: "smooth" });
+          scrollToIndex(cur - 1);
         }
       });
     }
 
     // Atualiza a bolinha ativa conforme a rolagem/deslize do dedo
     function updateActiveDot() {
-      if (!items.length || !dots.length) return;
-      var scrollLeft = viewport.scrollLeft;
-      var closestIdx = 0;
-      var minDiff = Infinity;
-
-      for (var i = 0; i < items.length; i++) {
-        var diff = Math.abs((items[i].offsetLeft - viewport.offsetLeft) - scrollLeft);
-        if (diff < minDiff) {
-          minDiff = diff;
-          closestIdx = i;
-        }
-      }
-
+      if (!dots.length) return;
+      var activeIdx = getActiveIndex();
       for (var d = 0; d < dots.length; d++) {
-        if (d === closestIdx) {
+        if (d === activeIdx) {
           dots[d].classList.add("active");
         } else {
           dots[d].classList.remove("active");
@@ -481,10 +497,7 @@
     for (var k = 0; k < dots.length; k++) {
       (function (dotIdx) {
         dots[dotIdx].addEventListener("click", function () {
-          if (items[dotIdx]) {
-            var targetLeft = items[dotIdx].offsetLeft - viewport.offsetLeft;
-            viewport.scrollTo({ left: targetLeft, behavior: "smooth" });
-          }
+          scrollToIndex(dotIdx);
         });
       })(k);
     }
