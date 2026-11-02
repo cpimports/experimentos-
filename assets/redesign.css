@@ -2371,7 +2371,7 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   display: flex !important;
   width: max-content !important;
   will-change: transform;
-  animation: scrollKidsPhotos 45s linear infinite;
+  animation: scrollKidsPhotos 28s linear infinite;
 }
 
 .kids-photos-marquee-wrap:hover .kids-photos-track {
