@@ -683,4 +683,77 @@
     }, { passive: true });
   })();
 
+  /* ---------- Notificações de Vendas Recentes (Prova Social) ---------- */
+  (function initSalesToast() {
+    var toast = document.getElementById("sales-toast");
+    var nameEl = document.getElementById("sales-toast-name");
+    var closeBtn = document.getElementById("sales-toast-close");
+    if (!toast || !nameEl) return;
+
+    var nomes = [
+      "Mariana Silva",
+      "Lucas Mendes",
+      "Camila Rocha",
+      "Rodrigo Alves",
+      "Juliana Martins",
+      "Felipe Oliveira",
+      "Beatriz Santos",
+      "Gabriel Costa",
+      "Patrícia Souza",
+      "Thiago Ribeiro",
+      "Aline Ferreira",
+      "Bruno Carvalho",
+      "Larissa Lima",
+      "André Barbosa",
+      "Fernanda Pereira",
+      "Rafael Guimarães",
+      "Vanessa Ramos",
+      "Carlos Eduardo",
+      "Priscila Dias",
+      "Marcelo Castro",
+      "Renata Farias",
+      "Danilo Moreira",
+      "Natália Borges",
+      "Eduardo Nogueira"
+    ];
+
+    // Embaralhar ordem dos nomes para alternar dinamicamente
+    var shuffled = nomes.slice().sort(function () { return Math.random() - 0.5; });
+    var currentIndex = 0;
+    var timerHide = null;
+    var timerNext = null;
+    var isDismissed = false;
+
+    function showNotification() {
+      if (isDismissed) return;
+
+      var nome = shuffled[currentIndex];
+      currentIndex = (currentIndex + 1) % shuffled.length;
+      nameEl.textContent = nome;
+
+      toast.classList.add("is-active");
+
+      // Permanece visível por 4.5 segundos
+      timerHide = setTimeout(function () {
+        toast.classList.remove("is-active");
+
+        // Intervalo aleatório para a próxima notificação (entre 8s e 15s)
+        var nextDelay = Math.floor(Math.random() * 7000) + 8000;
+        timerNext = setTimeout(showNotification, nextDelay);
+      }, 4500);
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener("click", function () {
+        isDismissed = true;
+        toast.classList.remove("is-active");
+        if (timerHide) clearTimeout(timerHide);
+        if (timerNext) clearTimeout(timerNext);
+      });
+    }
+
+    // Primeira notificação surge suavemente após 5 segundos da visita
+    timerNext = setTimeout(showNotification, 5000);
+  })();
+
 })();
