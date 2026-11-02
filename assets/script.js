@@ -68,6 +68,14 @@
      e entra assim que ele sai da tela por cima. */
   var ctaFixo = document.getElementById("cta-fixo");
   var botaoHero = document.querySelector('[data-testid="button-cta-hero"]');
+  if (botaoHero) {
+    botaoHero.addEventListener("click", function () {
+      var alvo = document.getElementById("secao-experimentos");
+      if (alvo) {
+        alvo.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  }
   if (ctaFixo && botaoHero && "IntersectionObserver" in window) {
     new IntersectionObserver(function (entradas) {
       entradas.forEach(function (e) {

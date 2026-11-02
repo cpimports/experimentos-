@@ -1289,7 +1289,8 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 /* ==========================================================================
    04 · VÍDEOS EM AÇÃO: CARROSSEL COM 4 VÍDEOS DE EXPERIMENTOS
    ========================================================================== */
-.section-videos {
+.section-videos, #secao-experimentos {
+  scroll-margin-top: 50px;
   padding: 72px 0 80px;
   background: linear-gradient(180deg, #F8FAFD 0%, #FFFFFF 50%, #F8FAFD 100%);
   border-top: none;
