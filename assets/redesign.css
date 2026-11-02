@@ -2338,7 +2338,7 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   margin-left: 4px;
 }
 
-/* Carrossel de Fotos com Setas e Peek (Não Infinito) */
+/* Carrossel de Fotos com Loop Infinito Contínuo + Efeito Peek */
 .kids-carousel-wrapper {
   position: relative;
   max-width: 1160px;
@@ -2350,14 +2350,17 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 
 .kids-carousel-viewport {
   width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  padding: 16px 4px 24px;
-  scroll-padding-left: 4px;
+  overflow: hidden;
+  position: relative;
+  padding: 16px 0 24px;
+  touch-action: pan-y;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.kids-carousel-viewport:active {
+  cursor: grabbing;
 }
 
 .kids-carousel-viewport::-webkit-scrollbar {
@@ -2368,7 +2371,9 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   display: flex !important;
   gap: 22px;
   width: max-content !important;
-  padding-right: 48px;
+  will-change: transform;
+  transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 0;
 }
 
 .kid-photo-item {
@@ -2377,12 +2382,12 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   height: 440px;
   border-radius: 26px;
   overflow: hidden;
-  scroll-snap-align: start;
-  scroll-snap-stop: normal;
   position: relative;
   box-shadow: 0 16px 36px -4px rgba(15, 23, 42, 0.14), 0 4px 10px rgba(15, 23, 42, 0.06);
   border: 4px solid #FFFFFF;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .kid-photo-item:hover {
@@ -2396,6 +2401,9 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   height: 100%;
   object-fit: cover;
   display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
 }
 
 .kid-photo-tag {
@@ -2646,7 +2654,7 @@ h1, h2, h3, h4, h5, h6, .font-heading {
     line-height: 1.55;
   }
 
-    .kids-carousel-wrapper {
+      .kids-carousel-wrapper {
     position: relative;
     padding: 0;
     margin: 24px -16px 36px;
@@ -2657,16 +2665,15 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   .kids-carousel-viewport {
     width: 100%;
     padding: 12px 0 20px;
-    scroll-padding: 0;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+    overflow: hidden;
+    touch-action: pan-y;
   }
 
   .kids-carousel-track {
     gap: 16px;
-    padding-left: calc(50vw - 130px);
-    padding-right: calc(50vw - 130px);
+    padding: 0;
+    will-change: transform;
+    transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .kid-photo-item {
@@ -2675,8 +2682,6 @@ h1, h2, h3, h4, h5, h6, .font-heading {
     height: 350px;
     border-radius: 22px;
     border-width: 3px;
-    scroll-snap-align: center;
-    scroll-snap-stop: always;
   }
 
   .kids-carousel-arrow {

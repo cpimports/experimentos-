@@ -410,100 +410,272 @@
   }
 
 
-  /* ---------- Carrossel de Fotos: Centralizado no Celular + Setas Infinitas + Bolinhas + Toque ---------- */
+  /* ---------- Carrossel de Fotos: Loop Infinito Real (Sem Voltar) + Centralizado + Setas + Toque + Bolinhas ---------- */
   (function initKidsPhotosCarousel() {
     var viewport = document.getElementById("kids-photos-viewport");
+    var track = document.getElementById("kids-photos-track");
     var prevBtn = document.getElementById("kids-prev-btn");
     var nextBtn = document.getElementById("kids-next-btn");
     var dotsContainer = document.getElementById("kids-carousel-dots");
-    if (!viewport) return;
+    if (!viewport || !track) return;
 
-    var dots = dotsContainer ? dotsContainer.querySelectorAll(".kdot") : [];
-    var items = viewport.querySelectorAll(".kid-photo-item");
-    if (!items.length) return;
+    var dots = dotsContainer ? Array.from(dotsContainer.querySelectorAll(".kdot")) : [];
+    var originalItems = Array.from(track.children);
+    var count = originalItems.length;
+    if (count === 0) return;
 
-    function getActiveIndex() {
-      var isMobile = window.innerWidth <= 768;
-      var targetCenter = isMobile
-        ? (viewport.scrollLeft + viewport.clientWidth / 2)
-        : (viewport.scrollLeft + 40);
-      var closestIdx = 0;
-      var minDiff = Infinity;
+    // Duplicar cards antes e depois para buffer infinito contínuo sem cortes
+    // Buffer anterior (clone de 0..count-1)
+    originalItems.slice().reverse().forEach(function (item) {
+      var clone = item.cloneNode(true);
+      clone.setAttribute("aria-hidden", "true");
+      clone.classList.add("is-clone");
+      track.insertBefore(clone, track.firstChild);
+    });
 
-      for (var i = 0; i < items.length; i++) {
-        var itemPos = isMobile
-          ? (items[i].offsetLeft + items[i].offsetWidth / 2)
-          : (items[i].offsetLeft - viewport.offsetLeft);
-        var diff = Math.abs(itemPos - targetCenter);
-        if (diff < minDiff) {
-          minDiff = diff;
-          closestIdx = i;
-        }
-      }
-      return closestIdx;
+    // Buffer posterior (clone de 0..count-1)
+    originalItems.forEach(function (item) {
+      var clone = item.cloneNode(true);
+      clone.setAttribute("aria-hidden", "true");
+      clone.classList.add("is-clone");
+      track.appendChild(clone);
+    });
+
+    // Agora o track possui: [clones 0..6] (indices 0..6) + [originais 0..6] (indices 7..13) + [clones 0..6] (indices 14..20)
+    var allItems = Array.from(track.children);
+    var currentIndex = count; // Começa exatamente no primeiro item original (índice 7)
+    var isTransitioning = false;
+    var currentTranslate = 0;
+
+    function getTargetX(index) {
+      if (!allItems[index]) return 0;
+      var item = allItems[index];
+      var vpWidth = viewport.clientWidth;
+      var itemWidth = item.offsetWidth;
+      // Posiciona o centro do card no centro do viewport
+      return ((vpWidth - itemWidth) / 2) - item.offsetLeft;
     }
 
-    function scrollToIndex(idx) {
-      if (idx < 0) idx = 0;
-      if (idx >= items.length) idx = items.length - 1;
-      var isMobile = window.innerWidth <= 768;
-      var targetScroll;
-      if (isMobile) {
-        targetScroll = items[idx].offsetLeft - (viewport.clientWidth - items[idx].offsetWidth) / 2;
+    function setTrackTransform(x, animate) {
+      currentTranslate = x;
+      if (animate) {
+        track.style.transition = "transform 0.38s cubic-bezier(0.16, 1, 0.3, 1)";
       } else {
-        targetScroll = items[idx].offsetLeft - viewport.offsetLeft;
+        track.style.transition = "none";
       }
-      viewport.scrollTo({ left: targetScroll, behavior: "smooth" });
+      track.style.transform = "translate3d(" + Math.round(x) + "px, 0, 0)";
     }
 
-    // Ao avançar na última foto, volta suavemente para a primeira foto
-    if (nextBtn) {
-      nextBtn.addEventListener("click", function () {
-        var cur = getActiveIndex();
-        if (cur >= items.length - 1) {
-          scrollToIndex(0);
-        } else {
-          scrollToIndex(cur + 1);
-        }
-      });
+    function jumpToIndex(index) {
+      currentIndex = index;
+      setTrackTransform(getTargetX(currentIndex), false);
+      // Forçar repaint síncrono para garantir o salto sem animação
+      track.offsetHeight;
     }
 
-    // Ao recuar na primeira foto, vai suavemente para a última foto
-    if (prevBtn) {
-      prevBtn.addEventListener("click", function () {
-        var cur = getActiveIndex();
-        if (cur <= 0) {
-          scrollToIndex(items.length - 1);
-        } else {
-          scrollToIndex(cur - 1);
-        }
-      });
+    function moveToIndex(index, animate) {
+      currentIndex = index;
+      if (animate) {
+        isTransitioning = true;
+      }
+      setTrackTransform(getTargetX(currentIndex), animate);
+      updateActiveDot();
     }
 
-    // Atualiza a bolinha ativa conforme a rolagem/deslize do dedo
     function updateActiveDot() {
       if (!dots.length) return;
-      var activeIdx = getActiveIndex();
-      for (var d = 0; d < dots.length; d++) {
-        if (d === activeIdx) {
-          dots[d].classList.add("active");
+      var realIdx = ((currentIndex - count) % count + count) % count;
+      dots.forEach(function (dot, i) {
+        if (i === realIdx) {
+          dot.classList.add("active");
         } else {
-          dots[d].classList.remove("active");
+          dot.classList.remove("active");
+        }
+      });
+    }
+
+    // Ao terminar a transição, se estiver em um clone, pula instantaneamente para o card original idêntico
+    track.addEventListener("transitionend", function (e) {
+      if (e.target !== track) return;
+      isTransitioning = false;
+
+      // Se passou além do último original (entrou nos clones finais)
+      if (currentIndex >= count * 2) {
+        jumpToIndex(currentIndex - count);
+      }
+      // Se recuou antes do primeiro original (entrou nos clones iniciais)
+      else if (currentIndex < count) {
+        jumpToIndex(currentIndex + count);
+      }
+      updateActiveDot();
+    });
+
+    function nextSlide() {
+      // Se já estiver além do limite por cliques rápidos, normaliza primeiro
+      if (currentIndex >= count * 2) {
+        jumpToIndex(currentIndex - count);
+      }
+      moveToIndex(currentIndex + 1, true);
+    }
+
+    function prevSlide() {
+      // Se já estiver abaixo do limite por cliques rápidos, normaliza primeiro
+      if (currentIndex < count) {
+        jumpToIndex(currentIndex + count);
+      }
+      moveToIndex(currentIndex - 1, true);
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        nextSlide();
+      });
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        prevSlide();
+      });
+    }
+
+    // Clique nas bolinhas para navegar diretamente
+    dots.forEach(function (dot, dotIdx) {
+      dot.addEventListener("click", function (e) {
+        e.preventDefault();
+        // Normaliza para o conjunto original central
+        if (currentIndex < count) {
+          jumpToIndex(currentIndex + count);
+        } else if (currentIndex >= count * 2) {
+          jumpToIndex(currentIndex - count);
+        }
+        moveToIndex(count + dotIdx, true);
+      });
+    });
+
+    // Gestos de Toque no Celular (Swipe Suave e Contínuo)
+    var touchStartX = 0;
+    var touchStartY = 0;
+    var touchStartTime = 0;
+    var touchStartTranslate = 0;
+    var isDragging = false;
+    var isHorizontalSwipe = null;
+
+    viewport.addEventListener("touchstart", function (e) {
+      if (!e.touches || e.touches.length > 1) return;
+      // Se estiver em um clone, normaliza instantaneamente
+      if (currentIndex >= count * 2) {
+        jumpToIndex(currentIndex - count);
+      } else if (currentIndex < count) {
+        jumpToIndex(currentIndex + count);
+      }
+
+      isDragging = true;
+      isHorizontalSwipe = null;
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      touchStartTime = Date.now();
+      touchStartTranslate = getTargetX(currentIndex);
+      setTrackTransform(touchStartTranslate, false);
+    }, { passive: true });
+
+    viewport.addEventListener("touchmove", function (e) {
+      if (!isDragging || !e.touches || e.touches.length > 1) return;
+      var curX = e.touches[0].clientX;
+      var curY = e.touches[0].clientY;
+      var diffX = curX - touchStartX;
+      var diffY = curY - touchStartY;
+
+      if (isHorizontalSwipe === null) {
+        if (Math.abs(diffX) > 7 || Math.abs(diffY) > 7) {
+          isHorizontalSwipe = Math.abs(diffX) >= Math.abs(diffY);
         }
       }
-    }
 
-    // Clique nas bolinhas para ir diretamente até a foto correspondente
-    for (var k = 0; k < dots.length; k++) {
-      (function (dotIdx) {
-        dots[dotIdx].addEventListener("click", function () {
-          scrollToIndex(dotIdx);
-        });
-      })(k);
-    }
+      if (!isHorizontalSwipe) return; // Permite scroll vertical nativo da página
+      if (e.cancelable) e.preventDefault();
 
-    viewport.addEventListener("scroll", updateActiveDot, { passive: true });
-    window.addEventListener("resize", updateActiveDot, { passive: true });
+      var newX = touchStartTranslate + diffX;
+      setTrackTransform(newX, false);
+    }, { passive: false });
+
+    viewport.addEventListener("touchend", function (e) {
+      if (!isDragging) return;
+      isDragging = false;
+      if (!isHorizontalSwipe) return;
+
+      var totalDiff = currentTranslate - touchStartTranslate;
+      var duration = Date.now() - touchStartTime;
+      var threshold = 45;
+      var isFastFlick = duration < 260 && Math.abs(totalDiff) > 20;
+
+      if (totalDiff < -threshold || (isFastFlick && totalDiff < 0)) {
+        nextSlide();
+      } else if (totalDiff > threshold || (isFastFlick && totalDiff > 0)) {
+        prevSlide();
+      } else {
+        moveToIndex(currentIndex, true);
+      }
+    }, { passive: true });
+
+    viewport.addEventListener("touchcancel", function () {
+      if (isDragging) {
+        isDragging = false;
+        moveToIndex(currentIndex, true);
+      }
+    });
+
+    // Suporte a arrasto com o mouse no Desktop
+    var mouseStartX = 0;
+    var mouseStartTranslate = 0;
+    var isMouseDown = false;
+    var mouseMoved = false;
+
+    viewport.addEventListener("mousedown", function (e) {
+      if (e.button !== 0) return;
+      if (currentIndex >= count * 2) {
+        jumpToIndex(currentIndex - count);
+      } else if (currentIndex < count) {
+        jumpToIndex(currentIndex + count);
+      }
+      isMouseDown = true;
+      mouseMoved = false;
+      mouseStartX = e.clientX;
+      mouseStartTranslate = getTargetX(currentIndex);
+      setTrackTransform(mouseStartTranslate, false);
+    });
+
+    window.addEventListener("mousemove", function (e) {
+      if (!isMouseDown) return;
+      var diffX = e.clientX - mouseStartX;
+      if (Math.abs(diffX) > 4) {
+        mouseMoved = true;
+      }
+      setTrackTransform(mouseStartTranslate + diffX, false);
+    });
+
+    window.addEventListener("mouseup", function (e) {
+      if (!isMouseDown) return;
+      isMouseDown = false;
+      if (!mouseMoved) return;
+      var totalDiff = currentTranslate - mouseStartTranslate;
+      if (totalDiff < -40) {
+        nextSlide();
+      } else if (totalDiff > 40) {
+        prevSlide();
+      } else {
+        moveToIndex(currentIndex, true);
+      }
+    });
+
+    // Atualiza centralização caso a janela mude de tamanho
+    window.addEventListener("resize", function () {
+      moveToIndex(currentIndex, false);
+    }, { passive: true });
+
+    // Inicialização na posição central do 1º item original
+    jumpToIndex(count);
     updateActiveDot();
   })();
 
