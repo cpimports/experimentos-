@@ -2620,9 +2620,39 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 /* ==========================================================================
    GARANTIA 7 DIAS
    ========================================================================== */
+
+/* Divisória Suave entre Depoimentos e Garantia */
+.soft-bridge-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 340px;
+  margin: 36px auto 32px;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+.soft-divider-line {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(226, 232, 240, 0) 0%, rgba(147, 197, 253, 0.7) 50%, rgba(226, 232, 240, 0) 100%);
+  border-radius: 2px;
+}
+
+.soft-divider-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #38BDF8, #1769E0);
+  box-shadow: 0 0 8px rgba(23, 105, 224, 0.45);
+  flex-shrink: 0;
+}
+
 .section-guarantee-wrap,
 [data-testid="section-guarantee"] {
-  margin-top: 68px;
+  margin-top: 32px;
   position: relative;
   z-index: 20;
 }
