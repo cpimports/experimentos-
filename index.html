@@ -21,6 +21,24 @@
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png" />
     <link rel="apple-touch-icon" href="./assets/favicon-180.png" />
 
+    <!-- Otimizações de Carregamento Instantâneo & Checkout Rápido -->
+    <link rel="preconnect" href="https://loja.geniozinhoemacao.com.br" crossorigin>
+    <link rel="dns-prefetch" href="https://loja.geniozinhoemacao.com.br">
+    <link rel="prefetch" href="https://loja.geniozinhoemacao.com.br/checkout/v2/gmzgYIvsRBQf2JFyvbrmL0" as="document">
+    <link rel="preload" as="image" href="./assets/capa-experimentos-nova.webp" type="image/webp">
+
+    <script type="speculationrules">
+    {
+      "prefetch": [
+        {
+          "source": "list",
+          "urls": ["https://loja.geniozinhoemacao.com.br/checkout/v2/gmzgYIvsRBQf2JFyvbrmL0"]
+        }
+      ]
+    }
+    </script>
+
+
     <!-- Panda Video: pré-conexão -->
     <link rel="preconnect" href="https://player-vz-d0969e7f-264.tv.pandavideo.com.br">
     <link rel="preconnect" href="https://b-vz-d0969e7f-264.tv.pandavideo.com.br">
@@ -33,7 +51,7 @@
 
     <!-- Estilos Base & Redesign -->
     <link rel="stylesheet" href="./assets/styles.css">
-    <link rel="stylesheet" href="./assets/redesign.css?v=44">
+    <link rel="stylesheet" href="./assets/redesign.css?v=45">
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
@@ -369,7 +387,7 @@
                   <!-- 1. Experimento do Vulcão -->
                   <div class="video-carousel-slide is-active-slide" data-slide-index="0">
                     <div class="phone-mockup-frame" data-testid="video-player">
-                      <video id="video-vulcao" class="absolute inset-0 w-full h-full object-cover" controls playsinline preload="auto" poster="./assets/capa-experimento-do-vulcao.jpg" title="Experimento do Vulcão">
+                      <video id="video-vulcao" class="absolute inset-0 w-full h-full object-cover" controls playsinline preload="none" poster="./assets/capa-experimento-do-vulcao.jpg" title="Experimento do Vulcão">
                         <source src="./assets/experimento_do_vulcao.mp4" type="video/mp4">
                         Seu navegador não suporta a reprodução deste vídeo.
                       </video>
@@ -384,7 +402,7 @@
                   <!-- 2. Pózinhos Mágicos -->
                   <div class="video-carousel-slide" data-slide-index="1">
                     <div class="phone-mockup-frame" data-testid="video-player-2">
-                      <video id="video-pozinhos-magicos" class="absolute inset-0 w-full h-full object-cover" controls playsinline preload="auto" poster="./assets/capa-pozinhos-magicos.jpg" title="Pózinhos Mágicos">
+                      <video id="video-pozinhos-magicos" class="absolute inset-0 w-full h-full object-cover" controls playsinline preload="none" poster="./assets/capa-pozinhos-magicos.jpg" title="Pózinhos Mágicos">
                         <source src="./assets/pozinhos_magicos.mp4" type="video/mp4">
                         Seu navegador não suporta a reprodução deste vídeo.
                       </video>
@@ -399,7 +417,7 @@
                   <!-- 3. Monstrinho de Lava -->
                   <div class="video-carousel-slide" data-slide-index="2">
                     <div class="phone-mockup-frame" data-testid="video-player-3">
-                      <video id="video-monstrinho" class="absolute inset-0 w-full h-full object-cover" controls playsinline preload="auto" poster="./assets/capa-monstrinho-de-lava.jpg" title="Monstrinho de Lava">
+                      <video id="video-monstrinho" class="absolute inset-0 w-full h-full object-cover" controls playsinline preload="none" poster="./assets/capa-monstrinho-de-lava.jpg" title="Monstrinho de Lava">
                         <source src="./assets/monstrinho_de_lava.mp4" type="video/mp4">
                         Seu navegador não suporta a reprodução deste vídeo.
                       </video>
@@ -414,7 +432,7 @@
                   <!-- 4. Garrafa das Cores -->
                   <div class="video-carousel-slide" data-slide-index="3">
                     <div class="phone-mockup-frame" data-testid="video-player-4">
-                      <video id="video-garrafa-cores" class="absolute inset-0 w-full h-full object-cover" controls playsinline preload="auto" poster="./assets/capa-garrafa-das-cores.jpg" title="Garrafa das Cores">
+                      <video id="video-garrafa-cores" class="absolute inset-0 w-full h-full object-cover" controls playsinline preload="none" poster="./assets/capa-garrafa-das-cores.jpg" title="Garrafa das Cores">
                         <source src="./assets/garrafa_das_cores.mp4" type="video/mp4">
                         Seu navegador não suporta a reprodução deste vídeo.
                       </video>
@@ -429,7 +447,7 @@
                   <!-- 5. O Mistério da Água -->
                   <div class="video-carousel-slide" data-slide-index="4">
                     <div class="phone-mockup-frame" data-testid="video-player-5">
-                      <video id="video-misterio-agua" class="absolute inset-0 w-full h-full object-cover" controls playsinline preload="auto" poster="./assets/capa-misterio-da-agua.jpg" title="O Mistério da Água">
+                      <video id="video-misterio-agua" class="absolute inset-0 w-full h-full object-cover" controls playsinline preload="none" poster="./assets/capa-misterio-da-agua.jpg" title="O Mistério da Água">
                         <source src="./assets/misterio_da_agua.mp4" type="video/mp4">
                         Seu navegador não suporta a reprodução deste vídeo.
                       </video>
@@ -444,7 +462,7 @@
                   <!-- 6. Experiência do Balão -->
                   <div class="video-carousel-slide" data-slide-index="5">
                     <div class="phone-mockup-frame" data-testid="video-player-6">
-                      <video id="video-balao" class="absolute inset-0 w-full h-full object-cover" controls playsinline preload="auto" poster="./assets/capa-experiencia-do-balao.jpg" title="Experiência do Balão">
+                      <video id="video-balao" class="absolute inset-0 w-full h-full object-cover" controls playsinline preload="none" poster="./assets/capa-experiencia-do-balao.jpg" title="Experiência do Balão">
                         <source src="./assets/experiencia_do_balao.mp4" type="video/mp4">
                         Seu navegador não suporta a reprodução deste vídeo.
                       </video>
@@ -832,7 +850,7 @@
           <div class="section-guarantee-wrap" data-testid="section-guarantee">
             <div class="guarantee-card">
               <div class="guarantee-img-wrap">
-                <img src="./assets/guarantee-new.png" alt="Garantia de 7 dias - Gêniozinho em Ação" data-testid="img-guarantee" loading="lazy" decoding="async">
+                <img src="./assets/guarantee.webp" alt="Garantia de 7 dias - Gêniozinho em Ação" data-testid="img-guarantee" loading="lazy" decoding="async">
               </div>
               <div data-testid="section-guarantee-text">
                 <h3 class="guarantee-title">Satisfação Garantida ou 100% do seu Dinheiro de Volta</h3>
@@ -1570,10 +1588,10 @@
 
 
     <!-- GSAP & ScrollTrigger (Animação Científica Interativa) -->
-    <script src="./assets/gsap.min.js"></script>
-    <script src="./assets/ScrollTrigger.min.js"></script>
-    <script src="./assets/beaker-animation.js?v=14"></script>
+    <script src="./assets/gsap.min.js" defer></script>
+    <script src="./assets/ScrollTrigger.min.js" defer></script>
+    <script src="./assets/beaker-animation.js?v=14" defer></script>
 
     <!-- Scripts com comportamentos interativos -->
-    <script src="./assets/script.js?v=16"></script></body>
+    <script src="./assets/script.js?v=17" defer></script></body>
 </html>

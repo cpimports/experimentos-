@@ -764,4 +764,41 @@
     startSalesToast();
   }
 
+  /* ---------- Pré-Aquecimento Instantâneo do Checkout ---------- */
+  (function initCheckoutFastLoad() {
+    var checkoutUrl = "https://loja.geniozinhoemacao.com.br/checkout/v2/gmzgYIvsRBQf2JFyvbrmL0";
+    var prewarmed = false;
+
+    function prewarmCheckout() {
+      if (prewarmed) return;
+      prewarmed = true;
+
+      // Injeta link de prefetch dinamicamente
+      var pf = document.createElement("link");
+      pf.rel = "prefetch";
+      pf.href = checkoutUrl;
+      document.head.appendChild(pf);
+    }
+
+    // Pré-aquece quando o visitante se aproxima da seção de oferta
+    var ofertaSec = document.getElementById("oferta");
+    if (ofertaSec && "IntersectionObserver" in window) {
+      var obs = new IntersectionObserver(function (entries) {
+        if (entries[0] && entries[0].isIntersecting) {
+          prewarmCheckout();
+          obs.disconnect();
+        }
+      }, { rootMargin: "300px" });
+      obs.observe(ofertaSec);
+    }
+
+    // Pré-aquece no toque/hover de qualquer botão CTA da página
+    var ctaButtons = document.querySelectorAll('[data-testid="button-checkout"], [data-testid^="button-cta-"]');
+    ctaButtons.forEach(function (btn) {
+      btn.addEventListener("pointerdown", prewarmCheckout, { passive: true });
+      btn.addEventListener("touchstart", prewarmCheckout, { passive: true });
+      btn.addEventListener("mouseenter", prewarmCheckout, { passive: true });
+    });
+  })();
+
 })();
