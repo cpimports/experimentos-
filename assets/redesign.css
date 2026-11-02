@@ -2030,36 +2030,43 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 }
 
 .bonus-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 32px;
-  max-width: 980px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 28px;
+  max-width: 1100px;
   margin: 40px auto 0;
 }
 
-.bonus-grid > .bonus-card-visual:last-child:nth-child(odd) {
-  grid-column: 1 / -1;
-  max-width: 474px;
-  justify-self: center;
-  width: 100%;
-}
-
-@media (max-width: 768px) {
-  .bonus-grid {
-    grid-template-columns: 1fr;
-    max-width: 480px;
-    gap: 24px;
-    margin-top: 30px;
-  }
-}
-
 .bonus-card-visual {
+  flex: 0 0 calc((100% - 56px) / 3);
+  max-width: calc((100% - 56px) / 3);
   position: relative;
   border-radius: 24px;
   overflow: hidden;
   box-shadow: 0 12px 32px -4px rgba(15, 23, 42, 0.12), 0 4px 12px rgba(15, 23, 42, 0.05);
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   background: #FFFFFF;
+}
+
+@media (max-width: 991px) and (min-width: 769px) {
+  .bonus-card-visual {
+    flex: 0 0 calc((100% - 28px) / 2);
+    max-width: calc((100% - 28px) / 2);
+  }
+}
+
+@media (max-width: 768px) {
+  .bonus-grid {
+    gap: 20px;
+    max-width: 440px;
+    margin-top: 30px;
+  }
+
+  .bonus-card-visual {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
 }
 
 .bonus-card-visual:hover {
