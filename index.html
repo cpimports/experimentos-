@@ -33,7 +33,7 @@
 
     <!-- Estilos Base & Redesign -->
     <link rel="stylesheet" href="./assets/styles.css">
-    <link rel="stylesheet" href="./assets/redesign.css?v=16">
+    <link rel="stylesheet" href="./assets/redesign.css?v=17">
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
@@ -738,147 +738,72 @@
             </div>
           </div>
 
-          <!-- Carrossel de Depoimentos em Quadrado -->
-          <div class="testimonials-carousel-wrapper" id="testimonials-carousel">
-            <!-- Botão Anterior (Desktop) -->
-            <button class="t-carousel-arrow prev" id="t-prev-btn" aria-label="Depoimento anterior" type="button">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
-            </button>
+          <!-- Lista de 3 Depoimentos Empilhados -->
+          <div class="testimonials-stack" id="testimonials-stack" data-testid="testimonials-stack">
 
-            <div class="testimonials-carousel-viewport" id="testimonials-viewport">
-              <div class="testimonials-carousel-track" id="testimonials-track">
-
-                <!-- Depoimento 1 (Quadrado) -->
-                <div class="testimonial-slide" data-slide-index="0">
-                  <div class="testimonial-card">
-                    <div class="testimonial-stars" aria-label="Avaliação 5 estrelas">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    </div>
-                    <blockquote class="testimonial-quote">
-                      "Minha filha de 6 anos não largava o tablet aos fins de semana. Começamos a fazer as experiências juntos e agora ela que pede a 'hora da ciência'! Ver os olhos dela brilhando não tem preço."
-                    </blockquote>
-                    <div class="testimonial-author">
-                      <div class="author-avatar" aria-hidden="true">CR</div>
-                      <div class="author-info">
-                        <span class="author-name">Camila R.</span>
-                        <span class="author-role">Mãe da Luísa (6 anos)</span>
-                      </div>
-                    </div>
-                  </div>
+            <!-- Depoimento 1 -->
+            <div class="testimonial-card">
+              <div class="testimonial-stars" aria-label="Avaliação 5 estrelas">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <blockquote class="testimonial-quote">
+                "Minha filha de 6 anos não largava o tablet aos fins de semana. Começamos a fazer as experiências juntos e agora ela que pede a 'hora da ciência'! Ver os olhos dela brilhando não tem preço."
+              </blockquote>
+              <div class="testimonial-author">
+                <div class="author-avatar" aria-hidden="true">CR</div>
+                <div class="author-info">
+                  <span class="author-name">Camila R.</span>
+                  <span class="author-role">Mãe da Luísa (6 anos)</span>
                 </div>
-
-                <!-- Depoimento 2 (Quadrado) -->
-                <div class="testimonial-slide" data-slide-index="1">
-                  <div class="testimonial-card">
-                    <div class="testimonial-stars" aria-label="Avaliação 5 estrelas">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    </div>
-                    <blockquote class="testimonial-quote">
-                      "O melhor é que usamos coisas comuns da cozinha: bicarbonato, vinagre, detergente e corante. Não precisei gastar nada extra e fizemos uma tarde inteira de descobertas incríveis!"
-                    </blockquote>
-                    <div class="testimonial-author">
-                      <div class="author-avatar" aria-hidden="true">RM</div>
-                      <div class="author-info">
-                        <span class="author-name">Rodrigo M.</span>
-                        <span class="author-role">Pai do Pedro (8 anos)</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Depoimento 3 (Quadrado) -->
-                <div class="testimonial-slide" data-slide-index="2">
-                  <div class="testimonial-card">
-                    <div class="testimonial-stars" aria-label="Avaliação 5 estrelas">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    </div>
-                    <blockquote class="testimonial-quote">
-                      "Tenho dois filhos com idades diferentes (5 e 9 anos) e foi incrível achar algo que prendeu a atenção dos dois. As explicações de 'por que acontece' são fáceis e muito educativas."
-                    </blockquote>
-                    <div class="testimonial-author">
-                      <div class="author-avatar" aria-hidden="true">MS</div>
-                      <div class="author-info">
-                        <span class="author-name">Mariana S.</span>
-                        <span class="author-role">Mãe de 2 (5 e 9 anos)</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Depoimento 4 (Quadrado) -->
-                <div class="testimonial-slide" data-slide-index="3">
-                  <div class="testimonial-card">
-                    <div class="testimonial-stars" aria-label="Avaliação 5 estrelas">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    </div>
-                    <blockquote class="testimonial-quote">
-                      "O formato com passo a passo ilustrado facilitou muito. Meu filho adorou preencher o Certificado de Pequeno Cientista no final, ele ficou super orgulhoso mostrando pra família!"
-                    </blockquote>
-                    <div class="testimonial-author">
-                      <div class="author-avatar" aria-hidden="true">FL</div>
-                      <div class="author-info">
-                        <span class="author-name">Fernanda L.</span>
-                        <span class="author-role">Mãe do Bernardo (7 anos)</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Depoimento 5 (Quadrado) -->
-                <div class="testimonial-slide" data-slide-index="4">
-                  <div class="testimonial-card">
-                    <div class="testimonial-stars" aria-label="Avaliação 5 estrelas">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    </div>
-                    <blockquote class="testimonial-quote">
-                      "Material muito caprichado e seguro. Fazer o vulcão e a experiência do balão virou nosso ritual de sábado. Valeu cada centavo pelo tempo de qualidade que ganhamos em casa."
-                    </blockquote>
-                    <div class="testimonial-author">
-                      <div class="author-avatar" aria-hidden="true">EP</div>
-                      <div class="author-info">
-                        <span class="author-name">Eduardo P.</span>
-                        <span class="author-role">Pai da Alice (5 anos)</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
               </div>
             </div>
 
-            <!-- Botão Próximo (Desktop) -->
-            <button class="t-carousel-arrow next" id="t-next-btn" aria-label="Próximo depoimento" type="button">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
-            </button>
-          </div>
+            <!-- Depoimento 2 -->
+            <div class="testimonial-card">
+              <div class="testimonial-stars" aria-label="Avaliação 5 estrelas">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <blockquote class="testimonial-quote">
+                "O melhor é que usamos coisas comuns da cozinha: bicarbonato, vinagre, detergente e corante. Não precisei gastar nada extra e fizemos uma tarde inteira de descobertas incríveis!"
+              </blockquote>
+              <div class="testimonial-author">
+                <div class="author-avatar" aria-hidden="true">RM</div>
+                <div class="author-info">
+                  <span class="author-name">Rodrigo M.</span>
+                  <span class="author-role">Pai do Pedro (8 anos)</span>
+                </div>
+              </div>
+            </div>
 
-          <!-- Indicadores de Pontos (Mobile / Tablet) -->
-          <div class="testimonials-dots" id="testimonials-dots">
-            <button class="tdot active" data-index="0" aria-label="Ir para depoimento 1"></button>
-            <button class="tdot" data-index="1" aria-label="Ir para depoimento 2"></button>
-            <button class="tdot" data-index="2" aria-label="Ir para depoimento 3"></button>
-            <button class="tdot" data-index="3" aria-label="Ir para depoimento 4"></button>
-            <button class="tdot" data-index="4" aria-label="Ir para depoimento 5"></button>
+            <!-- Depoimento 3 -->
+            <div class="testimonial-card">
+              <div class="testimonial-stars" aria-label="Avaliação 5 estrelas">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <blockquote class="testimonial-quote">
+                "Tenho dois filhos com idades diferentes (5 e 9 anos) e foi incrível achar algo que prendeu a atenção dos dois. As explicações de 'por que acontece' são simples, didáticas e educativas."
+              </blockquote>
+              <div class="testimonial-author">
+                <div class="author-avatar" aria-hidden="true">MS</div>
+                <div class="author-info">
+                  <span class="author-name">Mariana S.</span>
+                  <span class="author-role">Mãe de 2 (5 e 9 anos)</span>
+                </div>
+              </div>
+            </div>
+
           </div>
 
           <!-- Chamada Após os Depoimentos -->
