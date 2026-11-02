@@ -410,43 +410,88 @@
   }
 
 
-  /* ---------- Carrossel de Fotos: Navegação por Setas + Deslize com o Dedo (Não Infinito, com Peek) ---------- */
+  /* ---------- Carrossel de Fotos: Setas Infinitas (Volta ao Início) + Bolinhas + Peek + Toque ---------- */
   (function initKidsPhotosCarousel() {
     var viewport = document.getElementById("kids-photos-viewport");
     var prevBtn = document.getElementById("kids-prev-btn");
     var nextBtn = document.getElementById("kids-next-btn");
+    var dotsContainer = document.getElementById("kids-carousel-dots");
     if (!viewport) return;
 
-    function getScrollStep() {
-      var item = viewport.querySelector(".kid-photo-item");
-      return item ? (item.offsetWidth + 22) : 340;
+    var dots = dotsContainer ? dotsContainer.querySelectorAll(".kdot") : [];
+    var items = viewport.querySelectorAll(".kid-photo-item");
+
+    function getStep() {
+      var first = viewport.querySelector(".kid-photo-item");
+      return first ? (first.offsetWidth + 20) : 320;
     }
 
-    if (prevBtn) {
-      prevBtn.addEventListener("click", function () {
-        viewport.scrollBy({ left: -getScrollStep(), behavior: "smooth" });
-      });
+    function getMaxScroll() {
+      return viewport.scrollWidth - viewport.clientWidth;
     }
 
+    // Ao avançar na última foto, volta suavemente para a primeira foto
     if (nextBtn) {
       nextBtn.addEventListener("click", function () {
-        viewport.scrollBy({ left: getScrollStep(), behavior: "smooth" });
+        var max = getMaxScroll();
+        if (viewport.scrollLeft >= max - 15) {
+          viewport.scrollTo({ left: 0, behavior: "smooth" });
+        } else {
+          viewport.scrollBy({ left: getStep(), behavior: "smooth" });
+        }
       });
     }
 
-    function updateArrowStates() {
-      var maxScroll = viewport.scrollWidth - viewport.clientWidth - 10;
-      if (prevBtn) {
-        prevBtn.disabled = viewport.scrollLeft <= 10;
+    // Ao recuar na primeira foto, vai suavemente para a última foto
+    if (prevBtn) {
+      prevBtn.addEventListener("click", function () {
+        if (viewport.scrollLeft <= 15) {
+          viewport.scrollTo({ left: getMaxScroll(), behavior: "smooth" });
+        } else {
+          viewport.scrollBy({ left: -getStep(), behavior: "smooth" });
+        }
+      });
+    }
+
+    // Atualiza a bolinha ativa conforme a rolagem/deslize do dedo
+    function updateActiveDot() {
+      if (!items.length || !dots.length) return;
+      var scrollLeft = viewport.scrollLeft;
+      var closestIdx = 0;
+      var minDiff = Infinity;
+
+      for (var i = 0; i < items.length; i++) {
+        var diff = Math.abs((items[i].offsetLeft - viewport.offsetLeft) - scrollLeft);
+        if (diff < minDiff) {
+          minDiff = diff;
+          closestIdx = i;
+        }
       }
-      if (nextBtn) {
-        nextBtn.disabled = viewport.scrollLeft >= maxScroll;
+
+      for (var d = 0; d < dots.length; d++) {
+        if (d === closestIdx) {
+          dots[d].classList.add("active");
+        } else {
+          dots[d].classList.remove("active");
+        }
       }
     }
 
-    viewport.addEventListener("scroll", updateArrowStates, { passive: true });
-    window.addEventListener("resize", updateArrowStates, { passive: true });
-    updateArrowStates();
+    // Clique nas bolinhas para ir diretamente até a foto correspondente
+    for (var k = 0; k < dots.length; k++) {
+      (function (dotIdx) {
+        dots[dotIdx].addEventListener("click", function () {
+          if (items[dotIdx]) {
+            var targetLeft = items[dotIdx].offsetLeft - viewport.offsetLeft;
+            viewport.scrollTo({ left: targetLeft, behavior: "smooth" });
+          }
+        });
+      })(k);
+    }
+
+    viewport.addEventListener("scroll", updateActiveDot, { passive: true });
+    window.addEventListener("resize", updateActiveDot, { passive: true });
+    updateActiveDot();
   })();
 
 })();

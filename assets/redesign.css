@@ -2457,6 +2457,39 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 .kids-carousel-arrow.prev { left: -6px; }
 .kids-carousel-arrow.next { right: -6px; }
 
+
+/* Indicadores de Pontos do Carrossel de Fotos */
+.kids-carousel-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 12px auto 36px;
+}
+
+.kdot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: none;
+  background: #CBD5E1;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.kdot:hover {
+  background: #94A3B8;
+  transform: scale(1.15);
+}
+
+.kdot.active {
+  width: 26px;
+  border-radius: 13px;
+  background: var(--color-primary);
+  box-shadow: 0 2px 8px rgba(23, 105, 224, 0.35);
+}
+
 /* 3 Depoimentos Empilhados (Um embaixo do outro) */
 .testimonials-stack {
   max-width: 680px;
@@ -2637,7 +2670,31 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   }
 
   .kids-carousel-arrow {
-    display: none;
+    display: flex !important;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.16);
+    border: 1px solid #E2E8F0;
+    z-index: 15;
+  }
+
+  .kids-carousel-arrow svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .kids-carousel-arrow.prev {
+    left: 8px;
+  }
+
+  .kids-carousel-arrow.next {
+    right: 8px;
+  }
+
+  .kids-carousel-dots {
+    margin: 8px auto 28px;
   }
 
   .kid-photo-tag {
