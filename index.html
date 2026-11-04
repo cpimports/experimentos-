@@ -31,8 +31,15 @@
     <link rel="prefetch" href="https://loja.geniozinhoemacao.com.br/checkout/v4/gmzgYIvsRBQf2JFyvbrmL0" as="document">
     <link rel="preload" as="image" href="./assets/capa-experimentos-nova.webp" type="image/webp">
 
+    <link rel="prerender" href="https://loja.geniozinhoemacao.com.br/checkout/v4/gmzgYIvsRBQf2JFyvbrmL0">
     <script type="speculationrules">
     {
+      "prerender": [
+        {
+          "source": "list",
+          "urls": ["https://loja.geniozinhoemacao.com.br/checkout/v4/gmzgYIvsRBQf2JFyvbrmL0"]
+        }
+      ],
       "prefetch": [
         {
           "source": "list",
@@ -385,7 +392,7 @@
                   <!-- 1. Experimento do Vulcão -->
                   <div class="video-carousel-slide is-active-slide" data-slide-index="0">
                     <div class="phone-mockup-frame" data-testid="video-player">
-                      <video id="video-vulcao" class="absolute inset-0 w-full h-full object-cover" controls playsinline preload="none" poster="./assets/capa-experimento-do-vulcao.jpg" title="Experimento do Vulcão">
+                      <video id="video-vulcao" class="absolute inset-0 w-full h-full object-cover" controls playsinline preload="metadata" poster="./assets/capa-experimento-do-vulcao.jpg" title="Experimento do Vulcão">
                         <source src="./assets/experimento_do_vulcao.mp4" type="video/mp4">
                         Seu navegador não suporta a reprodução deste vídeo.
                       </video>
@@ -400,7 +407,7 @@
                   <!-- 2. Pózinhos Mágicos -->
                   <div class="video-carousel-slide" data-slide-index="1">
                     <div class="phone-mockup-frame" data-testid="video-player-2">
-                      <video id="video-pozinhos-magicos" class="absolute inset-0 w-full h-full object-cover" controls playsinline preload="none" poster="./assets/capa-pozinhos-magicos.jpg" title="Pózinhos Mágicos">
+                      <video id="video-pozinhos-magicos" class="absolute inset-0 w-full h-full object-cover" controls playsinline preload="metadata" poster="./assets/capa-pozinhos-magicos.jpg" title="Pózinhos Mágicos">
                         <source src="./assets/pozinhos_magicos.mp4" type="video/mp4">
                         Seu navegador não suporta a reprodução deste vídeo.
                       </video>
@@ -415,7 +422,7 @@
                   <!-- 3. Monstrinho de Lava -->
                   <div class="video-carousel-slide" data-slide-index="2">
                     <div class="phone-mockup-frame" data-testid="video-player-3">
-                      <video id="video-monstrinho" class="absolute inset-0 w-full h-full object-cover" controls playsinline preload="none" poster="./assets/capa-monstrinho-de-lava.jpg" title="Monstrinho de Lava">
+                      <video id="video-monstrinho" class="absolute inset-0 w-full h-full object-cover" controls playsinline preload="metadata" poster="./assets/capa-monstrinho-de-lava.jpg" title="Monstrinho de Lava">
                         <source src="./assets/monstrinho_de_lava.mp4" type="video/mp4">
                         Seu navegador não suporta a reprodução deste vídeo.
                       </video>
@@ -430,7 +437,7 @@
                   <!-- 4. Garrafa das Cores -->
                   <div class="video-carousel-slide" data-slide-index="3">
                     <div class="phone-mockup-frame" data-testid="video-player-4">
-                      <video id="video-garrafa-cores" class="absolute inset-0 w-full h-full object-cover" controls playsinline preload="none" poster="./assets/capa-garrafa-das-cores.jpg" title="Garrafa das Cores">
+                      <video id="video-garrafa-cores" class="absolute inset-0 w-full h-full object-cover" controls playsinline preload="metadata" poster="./assets/capa-garrafa-das-cores.jpg" title="Garrafa das Cores">
                         <source src="./assets/garrafa_das_cores.mp4" type="video/mp4">
                         Seu navegador não suporta a reprodução deste vídeo.
                       </video>
@@ -445,7 +452,7 @@
                   <!-- 5. O Mistério da Água -->
                   <div class="video-carousel-slide" data-slide-index="4">
                     <div class="phone-mockup-frame" data-testid="video-player-5">
-                      <video id="video-misterio-agua" class="absolute inset-0 w-full h-full object-cover" controls playsinline preload="none" poster="./assets/capa-misterio-da-agua.jpg" title="O Mistério da Água">
+                      <video id="video-misterio-agua" class="absolute inset-0 w-full h-full object-cover" controls playsinline preload="metadata" poster="./assets/capa-misterio-da-agua.jpg" title="O Mistério da Água">
                         <source src="./assets/misterio_da_agua.mp4" type="video/mp4">
                         Seu navegador não suporta a reprodução deste vídeo.
                       </video>
@@ -460,7 +467,7 @@
                   <!-- 6. Experiência do Balão -->
                   <div class="video-carousel-slide" data-slide-index="5">
                     <div class="phone-mockup-frame" data-testid="video-player-6">
-                      <video id="video-balao" class="absolute inset-0 w-full h-full object-cover" controls playsinline preload="none" poster="./assets/capa-experiencia-do-balao.jpg" title="Experiência do Balão">
+                      <video id="video-balao" class="absolute inset-0 w-full h-full object-cover" controls playsinline preload="metadata" poster="./assets/capa-experiencia-do-balao.jpg" title="Experiência do Balão">
                         <source src="./assets/experiencia_do_balao.mp4" type="video/mp4">
                         Seu navegador não suporta a reprodução deste vídeo.
                       </video>
@@ -1577,5 +1584,5 @@
     <script src="./assets/beaker-animation.js?v=14" defer></script>
 
     <!-- Scripts com comportamentos interativos -->
-    <script src="./assets/script.js?v=18" defer></script></body>
+    <script src="./assets/script.js?v=19" defer></script></body>
 </html>

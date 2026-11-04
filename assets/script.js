@@ -154,6 +154,10 @@
       for (var s = 0; s < totalVideoSlides; s++) {
         if (s === idxAtivo) {
           videoSlides[s].classList.add("is-active-slide");
+          var activeVid = videoSlides[s].querySelector("video");
+          if (activeVid && activeVid.preload !== "auto") {
+            activeVid.preload = "auto";
+          }
         } else {
           videoSlides[s].classList.remove("is-active-slide");
         }
@@ -258,7 +262,7 @@
     atualizarVideoDots(0);
     atualizarClassesSlides(0);
 
-    /* Controle dos botões de Play sobre as capas dos vídeos locais */
+    /* Controle dos botões de Play sobre as capas dos vídeos locais + Inicialização Instantânea */
     var playOverlays = document.querySelectorAll(".video-play-overlay");
     for (var ov = 0; ov < playOverlays.length; ov++) {
       (function (btn) {
@@ -267,8 +271,22 @@
         var vid = frame.querySelector("video");
         if (!vid) return;
 
+        function warmVideo() {
+          if (vid.preload !== "auto") {
+            vid.preload = "auto";
+          }
+        }
+        btn.addEventListener("pointerenter", warmVideo, { passive: true });
+        btn.addEventListener("touchstart", warmVideo, { passive: true });
+        frame.addEventListener("pointerenter", warmVideo, { passive: true });
+        frame.addEventListener("touchstart", warmVideo, { passive: true });
+
         btn.addEventListener("click", function () {
-          vid.play();
+          warmVideo();
+          var p = vid.play();
+          if (p && p.catch) {
+            p.catch(function () {});
+          }
         });
         vid.addEventListener("play", function () {
           btn.classList.add("is-hidden");
@@ -685,11 +703,16 @@
       if (prewarmed) return;
       prewarmed = true;
 
-      // Injeta link de prefetch dinamicamente
+      // Injeta link de prefetch e prerender dinamicamente
       var pf = document.createElement("link");
       pf.rel = "prefetch";
       pf.href = checkoutUrl;
       document.head.appendChild(pf);
+
+      var pr = document.createElement("link");
+      pr.rel = "prerender";
+      pr.href = checkoutUrl;
+      document.head.appendChild(pr);
     }
 
     // Pré-aquece quando o visitante se aproxima da seção de oferta
