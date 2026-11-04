@@ -320,17 +320,6 @@
       }
     });
   }
-  /* Repasse automático de parâmetros de rastreamento (UTMs) para o checkout */
-  var checkoutBtn = document.querySelector('[data-testid="button-checkout"]');
-  if (checkoutBtn && window.location.search) {
-    try {
-      var currentHref = checkoutBtn.getAttribute("href") || "";
-      if (currentHref) {
-        var sep = currentHref.indexOf("?") === -1 ? "?" : "&";
-        checkoutBtn.setAttribute("href", currentHref + sep + window.location.search.substring(1));
-      }
-    } catch (e) {}
-  }
 
 
   /* ---------- Carrossel de Fotos: Loop Infinito Real (Sem Voltar) + Centralizado + Setas + Toque + Bolinhas ---------- */
@@ -689,7 +678,7 @@
 
   /* ---------- Pré-Aquecimento Instantâneo do Checkout ---------- */
   (function initCheckoutFastLoad() {
-    var checkoutUrl = "https://loja.geniozinhoemacao.com.br/checkout/v2/gmzgYIvsRBQf2JFyvbrmL0";
+    var checkoutUrl = "https://loja.geniozinhoemacao.com.br/checkout/v4/gmzgYIvsRBQf2JFyvbrmL0";
     var prewarmed = false;
 
     function prewarmCheckout() {
