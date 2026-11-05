@@ -979,37 +979,37 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 
 /* 1. Águas entram de ambos os lados de forma mais cadenciada, colidem e se fundem */
 .science-transition.is-reacting .stream-blue-deep {
-  animation: blueStreamFlowAndMerge 2.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: blueStreamFlowAndMerge 2.1s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
 }
 
 .science-transition.is-reacting .stream-blue-main {
-  animation: blueStreamFlowAndMerge 2.4s cubic-bezier(0.22, 1, 0.36, 1) 0.08s forwards;
+  animation: blueStreamFlowAndMerge 2.0s cubic-bezier(0.2, 0.9, 0.3, 1) 0.05s forwards;
 }
 
 .science-transition.is-reacting .stream-yellow-deep {
-  animation: yellowStreamFlowAndMerge 2.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: yellowStreamFlowAndMerge 2.1s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
 }
 
 .science-transition.is-reacting .stream-yellow-main {
-  animation: yellowStreamFlowAndMerge 2.4s cubic-bezier(0.22, 1, 0.36, 1) 0.08s forwards;
+  animation: yellowStreamFlowAndMerge 2.0s cubic-bezier(0.2, 0.9, 0.3, 1) 0.05s forwards;
 }
 
 /* 2. Flash brilhante na colisão central */
 .science-transition.is-reacting .stream-flash {
-  animation: collisionGlow 2.1s ease-out 0.95s forwards;
+  animation: collisionGlow 1.8s ease-out 0.8s forwards;
 }
 
 /* 3. A água se transforma em UMA COR SÓ por toda a largura (Verde Esmeralda) */
 .science-transition.is-reacting .stream-unified-deep {
-  animation: unifiedReveal 1.35s ease-out 1.05s forwards;
+  animation: unifiedReveal 1.2s ease-out 0.88s forwards;
 }
 
 .science-transition.is-reacting .stream-unified-main {
-  animation: unifiedReveal 1.35s ease-out 1.05s forwards, unifiedUndulate 6s ease-in-out infinite alternate 2.4s;
+  animation: unifiedReveal 1.2s ease-out 0.88s forwards, unifiedUndulate 6s ease-in-out infinite alternate 2.1s;
 }
 
 .science-transition.is-reacting .stream-unified-crest {
-  animation: unifiedReveal 1.35s ease-out 1.12s forwards;
+  animation: unifiedReveal 1.2s ease-out 0.92s forwards;
 }
 
 /* Keyframes dos Fluxos Entrando e se Fundindo */

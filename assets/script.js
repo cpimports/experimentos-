@@ -302,19 +302,19 @@
   }
 
   /* ---------- Transição Científica: Água de Ambos os Lados + Mistura + Bolhas Fluidas ----------
-     Dispara apenas quando a faixa de onda chega um pouquinho abaixo do meio da tela (~60% da altura),
-     permitindo que o visitante veja claramente a água azul e amarela se encontrando e virando verde. */
+     Dispara com antecedência, logo que a faixa entra no campo de visão (~88% da altura da tela),
+     permitindo que o visitante veja com clareza as duas águas entrando dos lados e se fundindo. */
   var transicaoCientifica = document.getElementById("science-transition");
   if (transicaoCientifica) {
     var verificarPosicaoOnda = function () {
       var rect = transicaoCientifica.getBoundingClientRect();
       var vh = window.innerHeight || document.documentElement.clientHeight || 800;
-      // Ativa quando a transição chega um pouco abaixo do meio da tela (60% da altura da janela)
-      if (rect.top <= vh * 0.60 && rect.bottom >= 0) {
+      // Ativa assim que a transição entra no campo de visão (88% da altura da janela)
+      if (rect.top <= vh * 0.88 && rect.bottom >= 0) {
         if (!transicaoCientifica.classList.contains("is-reacting")) {
           transicaoCientifica.classList.add("is-reacting");
         }
-      } else if (rect.top > vh * 0.92) {
+      } else if (rect.top > vh * 1.05) {
         // Se a pessoa voltar a página para cima, rearma a onda para poder ver novamente ao descer
         transicaoCientifica.classList.remove("is-reacting");
       }
